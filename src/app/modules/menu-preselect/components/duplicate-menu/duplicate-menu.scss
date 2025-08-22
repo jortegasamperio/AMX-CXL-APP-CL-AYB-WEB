@@ -1,0 +1,236 @@
+@use '../../../../../styles.scss' as styles;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.formulario {
+    width: 80%;
+    margin-bottom: 1%;
+}
+
+.form_global {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.mat_form {
+    width: 20%;
+    margin-right: 2%;
+}
+
+.platillo_add {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1%;
+}
+
+.add_platillo_btn {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: styles.$primary-pink;
+    margin-right: 2%;
+}
+
+.add_platillo_btn:hover {
+    background-color: styles.$dark-pink;
+    box-shadow: 0 4px 8px rgba(249, 6, 116, 0.3);
+}
+
+.div_expansion_panel {
+    margin-bottom: 1%
+}
+
+.mat-expansion-panel-header {
+    padding: 10px;
+}
+
+.mat-expansion-panel-header-title {
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.delete_platillo_btn {
+    width: 175px;
+    height: 25px;
+    font-size: 12px;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #e91b2f;
+    margin-right: 2%;
+}
+
+.delete_platillo_btn:hover {
+    background-color: #e91b2f;
+    box-shadow: 0 4px 8px #e91b3075;
+}
+
+.form_platillo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+.mat_platillo {
+    width: 25%;
+    padding: 10px;
+}
+
+.div_btn_delete {
+    padding: 10px;
+}
+
+.div_tab {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tab_input {
+    width: 30%;
+    padding: 10px;
+}
+
+.tab_textarea {
+    width: 70%;
+    padding: 10px;
+}
+
+.platillo_save {
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #00588A;
+}
+
+.btn:hover {
+    background-color: #00588A;
+    box-shadow: 0 4px 8px #00578a89;
+}
+
+.btn:disabled,
+.btn[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+//Select
+.mat-mdc-option.mdc-list-item {
+    padding: 10px;
+}
+
+//////--------------------------------
+
+.div_content_image {
+    width: 35%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.preview {
+  max-width: 200px;
+  vertical-align: middle;
+  height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.mat-input-element {
+  font-size: medium;
+  font-weight: 200;
+}
+
+#fileInput {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+}
+
+.mat_image {
+    //width: 35%;
+    padding: 10px;
+    height: 10%;
+}
+
+.message_error {
+    padding: 15px;
+    color: red;
+}
+
+.div_img {
+    width: 100%;
+}
+
+.mat_toolbar_img {
+    background-color: #fff;
+    height: 10%;
+}
+
+.input_name {
+    font-size: 16px !important;
+}
+
+.input_img {
+    width: 100%;
+}
+
+.div_load_img {
+    width: 150px;
+    height: 150px;
+}
+
+.div_tab_content {
+    margin-top: 1%;
+}
+
+// Loading and error states
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border-left: 4px solid #c62828;
+    font-size: 14px;
+}

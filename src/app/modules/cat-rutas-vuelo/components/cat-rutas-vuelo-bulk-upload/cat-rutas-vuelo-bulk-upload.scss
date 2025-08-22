@@ -1,0 +1,241 @@
+.popup-container {
+  width: 900px;
+  height: 600px;
+}
+
+.fila {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.titulo-fila {
+  justify-content: space-between;
+  padding-bottom: 10%;
+}
+
+.titulo {
+  margin: 0;
+}
+
+.campo {
+  flex: 1;
+}
+
+.botones-fila {
+  justify-content: center;
+  padding-top: 5%;
+}
+
+.btn-buscar {
+  margin-inline: 60px;
+  border-radius: 20px;
+  padding: 6px 50px;
+  font-weight: 500;
+  width: 300px;
+}
+
+.container {
+  padding: 2rem;
+  text-align: center;
+  border: dashed 2px #979797;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 25px;
+  cursor: pointer;
+
+  input {
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+
+  i {
+    font-size: 64px;
+    color: #003366;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #38424c;
+    margin-top: 1rem;
+  }
+}
+
+.button-drop {
+  color: white;
+  width: 183px;
+  height: 44px;
+  border-radius: 21.5px;
+  background-color: #003366;
+  border-color: #f0f8ff00;
+}
+
+.button-drop:disabled,
+.button-drop[disabled] {
+  border: 1px solid #99999900;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.fileover {
+  animation: shake 1s;
+  animation-iteration-count: infinite;
+}
+
+.files-list {
+  margin-top: 1.5rem;
+  max-height: 300px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+
+  .single-file {
+    display: flex;
+    padding: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+
+    .name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #353f4a;
+      margin: 0;
+    }
+
+    .size {
+      font-size: 12px;
+      font-weight: 500;
+      color: #a4a4a4;
+      margin: 0;
+      margin-bottom: 0.25rem;
+    }
+
+    .info {
+      width: 100%
+    }
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+  .popup-container {
+    width: 95%;
+    height: auto;
+  }
+
+  .fila {
+    flex-direction: column;
+    gap: 12px;
+    align-items: end;
+  }
+
+  .titulo-fila {
+    padding-bottom: 5%;
+  }
+
+  .btn-buscar {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .button-drop {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+  .popup-container {
+    width: 95%;
+    height: auto;
+  }
+
+  .fila {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .btn-buscar {
+    width: 100%;
+    margin-inline: 0;
+  }
+}
+
+
+/* Tablet */
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+
+  .popup-container {
+    width: 90%;
+    height: auto;
+  }
+
+  .fila {
+    flex-direction: column;
+    gap: 12px;
+    align-items: end;
+  }
+
+  .btn-buscar {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .button-drop {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+
+  .popup-container {
+    width: 90%;
+  }
+
+  .fila {
+    gap: 14px;
+  }
+
+  .btn-buscar {
+    width: 70%;
+  }
+
+  .button-drop {
+    width: 70%;
+  }
+}
+
+/* Desktop */
+
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+
+  .popup-container {
+    width: 80%;
+  }
+
+  .btn-buscar {
+    width: 250px;
+  }
+
+  .button-drop {
+    width: 200px;
+  }
+}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {}

@@ -1,0 +1,52 @@
+<div class="div_dialog">
+  <div class="div_title">
+    <div class="section_title">
+      <h2 mat-dialog-title class="title">Carga de menú preselect</h2>
+    </div>
+    <div class="div_close">
+      <span matButton (click)="close(false)" class="icon-close">
+        <mat-icon>close</mat-icon>
+      </span>
+    </div>
+  </div>
+  <mat-dialog-content class="dialog_content">
+    <div class="container" appUpload (fileDropped)="onFileDropped($event)">
+      <input type="file" accept=".xlsx,.xls" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event)"
+        title="" />
+      <mat-icon class="icon_upload" fontIcon="cloud_upload"></mat-icon>
+      <h3>Arrestre y suelte sus archivos aquí</h3>
+      <h3>o</h3>
+      <button class="button-drop" for="fileDropRef">Seleccionar Archivo</button>
+    </div>
+    <div class="files-list">
+      @for (
+      file of filesList;
+      track file;
+      let i = $index
+      ) {
+      <div class="single-file">
+        <div class="file-icon icon_file">
+          <span class="span_icon" class="material-icons">insert_drive_file</span>
+        </div>
+        <div class="info">
+          <h4 class="name">
+            {{ file?.name }}
+          </h4>
+          <p class="size">
+            {{ formatBytes(file?.size, 0) }}
+          </p>
+        </div>
+        <div class="file-icon" (click)="deleteFile(i)">
+          <span class="span_icon" class="material-icons">delete_forever</span>
+        </div>
+      </div>
+      }
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="div_dialog_actions">
+      <button class="btn" (click)="close(false)">Cancelar</button>
+      <button class="btn_save" [disabled]="filesList.length ==0" (click)="upload()">Guardar</button>
+    </div>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,44 @@
+<div class="div_title">
+  <div class="section_title">
+    <h2 mat-dialog-title class="title">Agregar Correo Electronico Reporte {{ reportTypeName }}</h2>
+  </div>
+  <div class="div_close">
+    <span matButton (click)="close(false)" class="icon-close">
+      <mat-icon>close</mat-icon>
+    </span>
+  </div>
+</div>
+<mat-dialog-content class="dialog_content">
+  <form [formGroup]="form" class="formulario">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Correo Electronico</mat-label>
+      <input matInput formControlName="email" />
+      @if (form.get('email')?.hasError('required')) {
+      <mat-error>El correo es requerido</mat-error>
+      }
+      @if (form.get('email')?.hasError('email')) {
+      <mat-error>Formato de correo inválido</mat-error>
+      }
+    </mat-form-field>
+    @if (isInternationalReport) {
+    <mat-form-field appearance="outline">
+      <mat-label for="departureStations">Estacion</mat-label>
+      <mat-select id="departureStations" formControlName="departureStations" multiple #stationSelect>
+        <mat-option (onSelectionChange)="selectAllStations($event,stationSelect)">Seleccionar todo</mat-option>
+        @for (station of stationList; track $index) {
+        <mat-option [value]="station">{{station}}</mat-option>
+        }
+      </mat-select>
+      @if (form.get('departureStations')?.hasError('required')) {
+      <mat-error>La estacion es requerida</mat-error>
+      }
+    </mat-form-field>
+    }
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="div_dialog_actions">
+    <button class="btn" (click)="close(false)">Cancelar</button>
+    <button class="btn" matButton (click)="save()">Guardar</button>
+  </div>
+</mat-dialog-actions>

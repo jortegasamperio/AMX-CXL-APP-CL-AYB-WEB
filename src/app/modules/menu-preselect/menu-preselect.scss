@@ -1,0 +1,129 @@
+/* Estilos loading
+
+@use '../../../assets/css/loading.min.css' as styles;
+
+.splash {
+    background: #0007;
+}
+
+.LoadingScreen {
+    background-color: #0007;
+} */
+
+@use '../../../styles.scss' as styles;
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+
+    .home_container {
+        min-height: 91dvh;
+    }
+
+    .div_header {
+        height: 150px;
+    }
+
+    .text_title {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+    .div_header {
+        height: 130px;
+    }
+
+    .text_title {
+        font-size: 20px;
+    }
+}
+
+
+/* Tablet */
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+    .home_container {
+        min-height: 90.2dvh;
+    }
+
+    .div_header {
+        height: 150px;
+    }
+
+    .text_title {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+    .home_container {
+        min-height: 87dvh;
+    }
+
+    .div_header {
+        height: 120px;
+    }
+
+    .text_title {
+        font-size: 20px;
+    }
+}
+
+/* Desktop */
+
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+    .home_container {
+        min-height: 90dvh;
+    }
+
+    .div_header {
+        height: 150px;
+    }
+
+    .text_title {
+        font-size: 30px;
+    }
+}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {
+    .home_container {
+        //height: 100%;
+        min-height: 90.1dvh;
+    }
+
+    .div_header {
+        height: 200px;
+        width: 100%;
+    }
+}
+
+.div_header {
+    display: flex;
+    align-items: center;
+    background-image: url("../../../assets/images/menu_preselect.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: #ffffff70;
+    background-blend-mode: overlay;
+}
+
+.text_title {
+    padding: 20px;
+    color: styles.$primary-blue;
+}
+
+.div_container {
+    min-height: 68dvh;
+    width: 100%;
+}
+
+.div_breadcrumb {
+    padding: 15px;
+    font-size: 13px;
+}
+
+.a_ayb {
+    color: #07e7cc;
+    font-weight: bold;
+}

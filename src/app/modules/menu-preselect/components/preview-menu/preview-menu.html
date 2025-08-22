@@ -1,0 +1,54 @@
+<div class="div_dialog">
+    <div class="div_title">
+        <div class="div_close">
+            <img class="image_preview" src="../../../../../assets/images/logo_preview.png" alt="">
+        </div>
+        <div class="section_title">
+            <h2 mat-dialog-title class="title">Selecciona el menú de tu vuelo</h2>
+            <p class="subtitle">Fuiste seleccionado para elegir sin costo el menú para tu vuelo.</p>
+        </div>
+        <div class="div_close">
+            <span mat-dialog-close class="icon-close">
+                <mat-icon>close</mat-icon>
+            </span>
+        </div>
+    </div>
+    <div class="div_content_ruta">
+        <div class="columna grid_ruta">
+            <form class="mat_ruta">
+                <mat-form-field appearance="outline">
+                    <mat-label>Vuelo</mat-label>
+                    <input matInput placeholder="Vuelo" value="{{ruta}}" disabled="true" />
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="columna grid_pass">
+            <form class="mat_ruta">
+                <mat-form-field appearance="outline">
+                    <mat-label>Pasajero</mat-label>
+                    <input matInput placeholder="Pasajero" value=" " disabled="true" />
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="columna grid"></div>
+    </div>
+    <mat-dialog-content class="dialog_content">
+        <div class="div_content_card">
+            @for (
+            menu of dataMenu;
+            track menu;
+            ) {
+            <div class="course">
+                <div class="course-preview">
+                    <img [ngSrc]="menu.rutaImage" [alt]="menu.nombre_es" width="200" height="200" priority="high">
+                </div>
+                <div class="course-info">
+                    <h2>{{menu.nombre_es}}</h2>
+                    <h6>{{menu.descripcion_es}}</h6>
+                </div>
+            </div>
+            }
+
+        </div>
+    </mat-dialog-content>
+</div>

@@ -1,0 +1,58 @@
+<mat-dialog-content class="popup-container">
+  <form [formGroup]="form">
+    <div class="fila titulo-fila">
+      <h2 class="titulo">Agregar Codigo Alimento</h2>
+      <button mat-icon-button (click)="cerrar()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline">
+        <mat-label>Estacion salida</mat-label>
+        <mat-select formControlName="departureStation" multiple>
+          <mat-option [value]="option.value" *ngFor="let option of departureStations">{{ option.viewValue }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Codigo alimento</mat-label>
+        <input matInput formControlName="mealCode" />
+        <mat-error *ngIf="form.get('mealCode')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Codigo servicio</mat-label>
+        <input matInput formControlName="serviceCode" />
+        <mat-error *ngIf="form.get('serviceCode')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Cabina</mat-label>
+        <input matInput formControlName="cabin" />
+        <mat-error *ngIf="form.get('cabin')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Ciclo</mat-label>
+        <input matInput formControlName="cycle" />
+        <mat-error *ngIf="form.get('cycle')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Opcion</mat-label>
+        <input matInput formControlName="option" />
+        <mat-error *ngIf="form.get('option')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Codigo de preseleccion</mat-label>
+        <input matInput formControlName="code" />
+        <mat-error *ngIf="form.get('code')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fila botones-fila">
+      <button mat-raised-button color="primary" class="btn-buscar" (click)="cancelar()">Cancelar</button>
+      <button mat-raised-button color="primary" class="btn-buscar" (click)="guardar()" [disabled]="form.invalid">Guardar</button>
+    </div>
+  </form>
+</mat-dialog-content>

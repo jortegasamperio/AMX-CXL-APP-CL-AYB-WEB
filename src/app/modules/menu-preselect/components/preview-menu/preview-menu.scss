@@ -1,0 +1,410 @@
+/*Div titulo*/
+.div_title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.section_title {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_preview {
+    width: 80px;
+}
+
+.title {
+    font-size: 25px;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #00000069;
+}
+
+.div_close {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Estilos para la seccion de rita del vuelo*/
+.div_content_ruta {
+    width: 100%;
+    margin-top: 1%;
+}
+
+.columna {
+    height: 80px;
+    float: left;
+    border-color: #0000003d !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid_ruta {
+    width: 30%;
+    border: solid 1px;
+    border-left: none;
+}
+
+.mat_ruta {
+    width: 70%;
+    height: 70%;
+}
+
+.grid_pass {
+    width: 40%;
+    border: solid 1px;
+    border-left: none;
+    border-right: none;
+}
+
+.grid {
+    width: 30%;
+    border: solid 1px;
+    border-right: none;
+}
+
+/*Estilos para el card*/
+//Stilo para quitar el padding de todo el conbtenido del dialogo
+.dialog_content {
+    //padding: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div_content_card {
+    width: 94%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    //background-color: aquamarine;
+}
+
+
+.course {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    //max-width: 100%;
+    margin: 20px;
+    overflow: hidden;
+    width: 400px;
+    height: 300px;
+}
+
+.course h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.course h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+.course-preview {
+    //background-color: #2A265F;
+    //padding: 30px;
+    width: 45%;
+}
+
+.course-preview img {
+    width: 100%;
+    height: auto;
+}
+
+@supports(object-fit: cover) {
+    .course-preview img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+.course-info {
+    padding: 20px;
+    position: relative;
+    width: 55%;
+}
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+    ::ng-deep .cdk-overlay-container {
+        overflow-y: scroll;
+    }
+
+    ::ng-deep .cdk-overlay-backdrop {
+        position: fixed;
+    }
+
+    .mat-mdc-dialog-content {
+        min-height: 65vh;
+        max-height: none;
+    }
+
+    .image_preview {
+        width: 50px;
+    }
+
+    .div_close {
+        width: 20%;
+    }
+
+    .section_title {
+        width: 60%;
+    }
+
+    .title {
+        font-size: 15px;
+        padding: 5%;
+        line-height: normal;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        padding: 5px;
+    }
+
+    .div_content_ruta {
+        flex-direction: column;
+    }
+
+    .grid_ruta {
+        width: 100%;
+        border-bottom: none;
+        border-right: none;
+    }
+
+    .grid_pass {
+        width: 100%;
+    }
+
+    .grid {
+        width: 100%;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        display: none;
+    }
+
+    .dialog_content {
+        padding: 2px;
+    }
+
+    .course h2 {
+        font-size: .77rem;
+        line-height: 1rem;
+    }
+
+    .course h6 {
+        font-size: 0.57rem;
+        line-height: 1rem;
+    }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+    .div_close {
+        width: 15%;
+    }
+
+    .section_title {
+        width: 70%;
+    }
+
+    .image_preview {
+        width: 60px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        padding: 5px;
+    }
+
+    .grid_ruta {
+        width: 40%;
+    }
+
+    .grid_pass {
+        width: 40%;
+    }
+
+    .grid {
+        width: 20%;
+    }
+
+    .course h2 {
+        font-size: 1rem;
+    }
+
+    .course h6 {
+        font-size: 0.57rem;
+    }
+}
+
+/* Tablet */
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+
+    //Sobreescribimos el estilo para el maximo que pixeles que puede ocupar la modal
+    ::ng-deep .cdk-overlay-pane {
+        max-width: 800px !important;
+        justify-content: center;
+    }
+
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 567px !important;
+    }
+
+    .div_close {
+        width: 15%;
+    }
+
+    .section_title {
+        width: 70%;
+    }
+
+    .dialog_content {
+        padding: 1px;
+    }
+
+    .div_content_card {
+        width: 100%;
+    }
+
+    .course {
+        margin: 10px;
+        width: 255px;
+        height: 350px;
+    }
+
+    .course h2 {
+        font-size: 1em;
+        line-height: 1.2rem;
+    }
+
+    .course h6 {
+        font-size: 0.60rem;
+        line-height: 1.5rem;
+    }
+
+    .course-info {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+    ::ng-deep .cdk-overlay-container {
+        overflow-y: scroll;
+    }
+
+    ::ng-deep .cdk-overlay-backdrop {
+        position: fixed;
+    }
+
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 700px !important;
+    }
+
+    .mat-mdc-dialog-content {
+        min-height: 65vh;
+        max-height: none;
+    }
+
+    .div_close {
+        width: 15%;
+    }
+
+    .section_title {
+        width: 70%;
+    }
+
+    .grid_ruta {
+        width: 40%;
+    }
+
+    .grid_pass {
+        width: 40%;
+    }
+
+    .grid {
+        width: 20%;
+    }
+
+    .div_content_card {
+        width: 480px;
+    }
+
+    .course {
+        margin: 3px;
+        width: 230px;
+    }
+
+    .course h2 {
+        font-size: 1rem;
+        line-height: 1rem;
+    }
+
+    .course h6 {
+        font-size: 0.57rem;
+        line-height: 1rem;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+    //Sobreescribimos el estilo para el maximo que pixeles que puede ocupar la modal
+    ::ng-deep .cdk-overlay-pane {
+        max-width: 1500px !important;
+        justify-content: center;
+    }
+
+    ::ng-deep .cdk-overlay-container {
+        overflow-y: scroll;
+    }
+
+    ::ng-deep .cdk-overlay-backdrop {
+        position: fixed;
+    }
+
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 800px !important;
+    }
+
+    .dialog_content {
+        padding: 10px;
+    }
+
+    .div_content_card {
+        width: 100%;
+    }
+
+    .course {
+        margin: 10px;
+        width: 360px;
+    }
+}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 1000px !important;
+    }
+}

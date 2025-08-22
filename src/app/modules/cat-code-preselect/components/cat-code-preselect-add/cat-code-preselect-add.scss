@@ -1,0 +1,147 @@
+.popup-container {
+  width: 900px;
+  height: 600px;
+}
+
+.fila {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.titulo-fila {
+  justify-content: space-between;
+  padding-bottom: 10%;
+}
+
+.titulo {
+  margin: 0;
+}
+
+.campo {
+  flex: 1;
+}
+
+.botones-fila {
+  justify-content: center;
+  padding-top: 5%;
+}
+
+.btn-buscar {
+  margin-inline: 60px;
+  border-radius: 20px;
+  padding: 6px 50px;
+  font-weight: 500;
+  width: 300px;
+}
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+
+  .popup-container {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .fila {
+    flex-direction: column;
+    gap: 8px;
+    align-items: end;
+  }
+
+  .titulo-fila {
+    flex-direction: column;
+    padding-bottom: 5%;
+  }
+
+  .btn-buscar {
+    width: 100%;
+    margin-inline: 0;
+    padding: 10px 20px;
+  }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+
+  .popup-container {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .fila {
+    flex-direction: column;
+    gap: 8px;
+    align-items: end;
+  }
+
+  .titulo-fila {
+    flex-direction: column;
+    padding-bottom: 5%;
+  }
+
+  .btn-buscar {
+    width: 100%;
+    margin-inline: 0;
+    padding: 10px 20px;
+  }
+}
+
+
+/* Tablet */
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+
+  .popup-container {
+    width: 90%;
+    height: auto;
+    padding: 2rem;
+  }
+
+  .fila {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn-buscar {
+    width: 80%;
+    margin-inline: auto;
+  }
+}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+
+  .popup-container {
+    width: 90%;
+    height: auto;
+    padding: 2rem;
+  }
+
+  .fila {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn-buscar {
+    width: 80%;
+    margin-inline: auto;
+  }
+}
+
+/* Desktop */
+
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+
+  .popup-container {
+    width: 80%;
+    height: auto;
+  }
+
+  .btn-buscar {
+    width: 250px;
+  }
+}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {}

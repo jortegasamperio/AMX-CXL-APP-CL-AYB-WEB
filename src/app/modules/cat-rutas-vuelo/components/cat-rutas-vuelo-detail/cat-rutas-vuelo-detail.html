@@ -1,0 +1,61 @@
+<mat-dialog-content class="popup-container">
+  <form [formGroup]="rutasVueloForm" *ngIf="rutasVueloForm">
+    <div class="fila titulo-fila">
+      <h2 class="titulo">Detalle Vuelo</h2>
+      <button mat-icon-button (click)="cerrar()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Carrier</mat-label>
+        <input matInput formControlName="carrier" [disabled]="true" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Region</mat-label>
+        <input matInput formControlName="region" [disabled]="true" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>No. vuelo</mat-label>
+        <input matInput formControlName="flightNumber" [disabled]="true" />
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Estacion de salida</mat-label>
+        <input matInput formControlName="departureAirport" [disabled]="true" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Estacion de llegada</mat-label>
+        <input matInput formControlName="arrivalAirport" [disabled]="true" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Grupo</mat-label>
+        <input matInput formControlName="group" [disabled]="true" />
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>IATA CJ</mat-label>
+        <input matInput formControlName="iatacj" [disabled]="true" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>IATA CY</mat-label>
+        <input matInput formControlName="iatacy" [disabled]="true" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Preselect</mat-label>
+        <input matInput formControlName="preselect" [disabled]="true" />
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo comentarios">
+        <mat-label>Comentario</mat-label>
+        <textarea matInput formControlName="comentarios" rows="3" [disabled]="true"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="fila botones-fila">
+      <button mat-raised-button color="primary" class="btn-buscar" (click)="cancelar()">Cerrar</button>
+    </div>
+  </form>
+</mat-dialog-content>

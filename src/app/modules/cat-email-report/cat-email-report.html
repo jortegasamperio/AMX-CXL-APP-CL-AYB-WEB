@@ -1,0 +1,98 @@
+<div class="home_container">
+  <div class="div_header">
+    <h1 class="text_title">Catálogo de Correo Electronico</h1>
+  </div>
+  <div class="div_container">
+    <div class="div_breadcrumb">
+      <a>Inicio<mat-icon fontIcon="home"></mat-icon> / </a><a class="a_ayb">Catálogo de Correo Electronico</a>
+    </div>
+    <div class="container_table">
+      <div class="div_report">
+        <mat-form-field class="mat_report" appearance="outline">
+          <mat-label>Tipo reporte</mat-label>
+          <mat-select (selectionChange)="changeReportType($event.value)" [(value)]="typeReport">
+            @for (type of reportTypes; track type) {
+            <mat-option [value]="type.key">
+              {{type.name}}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- Buscador -->
+      <div class="div_expansion_panel">
+        <mat-expansion-panel class="expansion_panel" (opened)="panelOpenState.set(true)"
+          (closed)="panelOpenState.set(false)">
+          <mat-expansion-panel-header style="padding: 20px;">
+            <mat-panel-title>
+              Buscador Avanzado <!-- <mat-icon class="icon_search">search</mat-icon> -->
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <form [formGroup]="searchForm">
+              <div class="div_search">
+                <mat-form-field appearance="outline">
+                  <mat-label>Correo Electronico</mat-label>
+                  <input matInput placeholder="Correo Electronico" formControlName="email" />
+                </mat-form-field>
+
+                @if (headerReportType === 3) {
+                <mat-form-field appearance="outline">
+                  <mat-label for="departureStations">Estacion</mat-label>
+                  <mat-select id="departureStations" formControlName="departureStations" multiple>
+                    @for (station of stationList; track $index) {
+                    <mat-option [value]="station">{{station}}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+                }
+
+                <mat-form-field appearance="outline">
+                  <mat-label for="departureStations">Estatus</mat-label>
+                  <mat-select id="departureStations" formControlName="status">
+                    @for (status of statusList; track $index) {
+                    <mat-option [value]="status">{{status}}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <mat-action-row class="action_row">
+                <button class="search_btn btn_clearf" (click)="clearForm()">Borrar Filtros</button>
+                <button class="search_btn" (click)="advancedSearch()">Buscar</button>
+              </mat-action-row>
+
+            </form>
+          </div>
+        </mat-expansion-panel>
+      </div>
+      <!-- Botones de carga -->
+      <div class="div_upload">
+        <button class="upload_btn" (click)="openModalAdd()">Agregar</button>
+      </div>
+      <!-- Table -->
+      <div class="div_table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container *ngFor="let col of emailCols" [matColumnDef]="col.field">
+            <th mat-header-cell *matHeaderCellDef>{{ col.header }}</th>
+            <td mat-cell *matCellDef="let reg">
+              {{ reg[col.field] }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>Editar</th>
+            <td mat-cell *matCellDef="let reg">
+              <button mat-icon-button class="btn_table" (click)="openModalEdit(reg)">
+                <mat-icon class="mat_icon">edit_document</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageSizeOptions]="pageSizes"
+          [pageIndex]="pageNumber - 1" (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<mat-dialog-content class="popup-container">
+  <div class="fila titulo-fila">
+    <h2 class="titulo">Agregar Ruta-Vuelo</h2>
+    <button mat-icon-button (click)="cerrar()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="addForm">
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Carrier</mat-label>
+        <input matInput formControlName="carrier" />
+        <mat-error *ngIf="addForm.get('carrier')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Region</mat-label>
+        <input matInput formControlName="region" />
+        <mat-error *ngIf="addForm.get('region')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>No. vuelo</mat-label>
+        <input matInput formControlName="flightNumber" />
+        <mat-error *ngIf="addForm.get('flightNumber')?.hasError('required')">Campo requerido</mat-error>
+        <mat-error *ngIf="addForm.get('flightNumber')?.hasError('pattern')">Solo se permiten números</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Estacion de salida</mat-label>
+        <input matInput formControlName="departureAirport" />
+        <mat-error *ngIf="addForm.get('departureAirport')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Estacion de llegada</mat-label>
+        <input matInput formControlName="arrivalAirport" />
+        <mat-error *ngIf="addForm.get('arrivalAirport')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Grupo</mat-label>
+        <input matInput formControlName="group" />
+        <mat-error *ngIf="addForm.get('group')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>IATA CJ</mat-label>
+        <input matInput formControlName="iatacj" />
+        <mat-error *ngIf="addForm.get('iatacj')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>IATA CY</mat-label>
+        <input matInput formControlName="iatacy" />
+        <mat-error *ngIf="addForm.get('iatacy')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Preselect</mat-label>
+        <input matInput formControlName="preselect" />
+        <mat-error *ngIf="addForm.get('preselect')?.hasError('required')">Campo requerido</mat-error>
+        <mat-error *ngIf="addForm.get('preselect')?.hasError('pattern')">Solo se permite 'Si' o 'No'</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fila">
+      <mat-form-field appearance="outline" class="campo comentarios">
+        <mat-label>Comentario</mat-label>
+        <textarea matInput formControlName="comment" rows="3"></textarea>
+        <mat-error *ngIf="addForm.get('comment')?.hasError('required')">Campo requerido</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="fila botones-fila">
+    <button mat-raised-button color="primary" class="btn-buscar" (click)="cancelar()">Cancelar</button>
+    <button mat-raised-button color="primary" class="btn-buscar" (click)="guardar()">Guardar</button>
+  </div>
+</mat-dialog-content>

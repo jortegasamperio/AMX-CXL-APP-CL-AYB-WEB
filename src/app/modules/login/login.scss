@@ -1,0 +1,304 @@
+@use '../../../styles.scss' as styles;
+
+
+.login-container {
+
+  display: flex;
+  width: 100%;
+  height: 96dvh;
+  background-image: url('../../../assets/images/aeromexico-front-login.jpg');
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+
+.login-card {
+
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  height: 65%;
+  max-height: 500px;
+
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.login-form {
+  width: 70%;
+}
+
+
+/*------estilo logotipo------*/
+.login_icon {
+  position: relative;
+  width: 100%;
+}
+
+.login_icon .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login_icon .wrap::before {
+  content: '';
+  position: absolute;
+  top: 44%;
+  left: 0;
+  border-top: 3px solid #f90674;
+  background: #f90674;
+  width: 33%;
+}
+
+.login_icon .wrap::after {
+  content: '';
+  position: absolute;
+  top: 44%;
+  right: 0;
+  border-top: 3px solid #f90674;
+  background: #f90674;
+  width: 33%;
+}
+
+.login_icon .wrap img {
+  z-index: 1001;
+}
+
+.login_icon .logo_circle {
+  display: flex;
+  /* CIRCLE SIZE */
+  width: 110px;
+  height: 110px;
+  background: #060c4d;
+  /*BACKGROUND COLOR HERE*/
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+/*-----------*/
+
+
+.login-title {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 400;
+  color: white;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.login-subtitle {
+  font-size: clamp(16px, 4vw, 28px);
+  font-weight: 350;
+  color: white;
+  text-align: center;
+}
+
+.image_logo {
+  width: 90px;
+  height: 90px;
+}
+
+.login-button {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 300;
+  border-radius: 20px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: styles.$primary-pink;
+  padding: 10px 40px;
+}
+
+.login-button:hover {
+  background-color: styles.$dark-pink;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(249, 6, 116, 0.3);
+}
+
+
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+  .login-container {
+    height: 100%;
+    min-height: 95dvh;
+  }
+
+  .login-card {
+    max-width: 300px;
+    height: 400px;
+  }
+
+  .login-title {
+    font-size: clamp(28px, 5vw, 32px);
+  }
+
+  .login_icon .logo_circle {
+    /* CIRCLE SIZE */
+    width: 90px;
+    height: 90px;
+  }
+
+  .login_icon .wrap::before {
+    width: 30%;
+  }
+
+  .login_icon .wrap::after {
+    width: 30%;
+  }
+
+  .image_logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .login-subtitle {
+    font-size: clamp(22px, 4vw, 30px);
+  }
+
+  .login-button {
+    font-size: 14px;
+    padding: 7px 40px;
+  }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+  .login-container {
+    height: 100%;
+    min-height: 100dvh;
+  }
+
+  .login-card {
+    max-width: 300px;
+    height: 400px;
+  }
+
+  .login-title {
+    font-size: 22px;
+  }
+
+  .login_icon .logo_circle {
+    /* CIRCLE SIZE */
+    width: 80px;
+    height: 80px;
+  }
+
+  .image_logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .login-subtitle {
+    font-size: 22px;
+  }
+
+  .login-button {
+    font-size: 12px;
+    padding: 8px 35px;
+  }
+}
+
+
+/* Tablet */
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+  .login-container {
+    height: 100%;
+    min-height: 94dvh;
+  }
+
+  .login-card {
+    height: 500px;
+  }
+}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+  .login-container {
+    height: 100%;
+    min-height: 100dvh;
+  }
+
+  .login-card {
+    max-width: 300px;
+    height: 400px;
+  }
+
+  .login_icon .logo_circle {
+    /* CIRCLE SIZE */
+    width: 90px;
+    height: 90px;
+  }
+
+  .login_icon .wrap::before {
+    width: 30%;
+  }
+
+  .login_icon .wrap::after {
+    width: 30%;
+  }
+
+  .image_logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .login-title {
+    font-size: clamp(24px, 5vw, 30px);
+  }
+
+  .login-subtitle {
+    font-size: clamp(22px, 4vw, 30px);
+  }
+
+  .login-button {
+    font-size: 14px;
+    padding: 7px 40px;
+  }
+}
+
+/* Desktop */
+
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+  .login-container {
+    height: 100%;
+    min-height: 94dvh;
+  }
+
+  .login-card {
+    height: 450px;
+    max-width: 350px;
+  }
+
+  .login_icon .wrap::before {
+    width: 30%;
+  }
+
+  .login_icon .wrap::after {
+    width: 30%;
+  }
+
+  .login-button {
+    padding: 7px 40px;
+  }
+}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {}

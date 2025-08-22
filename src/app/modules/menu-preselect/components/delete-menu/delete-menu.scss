@@ -1,0 +1,166 @@
+@use '../../../../../styles.scss' as styles;
+
+.dialog_content {
+    border-color: #0000003d !important;
+    border: solid 1px;
+    border-left: none;
+    border-right: none;
+    height: 165px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+
+/*Div titulo*/
+
+.div_title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.section_title {
+    width: 90%;
+    padding: 10px;
+}
+
+.title {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.div_close {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_dialog_actions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.btn {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: styles.$primary-darkcyan;
+}
+
+.btn:hover {
+    background-color: styles.$primary-darkcyan;
+    box-shadow: 0 4px 8px styles.$dark-darkcyan;
+}
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+    .section_title {
+        padding: 5px;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .dialog_content {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 120px;
+        height: 22px;
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+    .section_title {
+        padding: 5px;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .dialog_content {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 120px;
+        height: 22px;
+        font-size: 11px;
+    }
+}
+
+/* Tablet */
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 500px !important;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .dialog_content {
+        font-size: 17px;
+    }
+
+    .btn {
+        width: 130px;
+        height: 25px;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+    .div_dialog {
+        width: 100dvh;
+    }
+
+    .section_title {
+        padding: 7px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    .dialog_content {
+        font-size: 15px;
+    }
+
+    .btn {
+        width: 120px;
+        height: 22px;
+        font-size: 11px;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 500px !important;
+    }
+}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {
+    .div_dialog {
+        width: 65dvh;
+    }
+}

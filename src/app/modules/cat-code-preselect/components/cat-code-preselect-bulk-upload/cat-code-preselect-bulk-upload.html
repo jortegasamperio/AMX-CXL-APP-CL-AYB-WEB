@@ -1,0 +1,35 @@
+<mat-dialog-content class="popup-container">
+  <div class="fila titulo-fila">
+    <h2 class="titulo">Cargar Codigos de Alimentos</h2>
+    <button mat-icon-button (click)="cerrar()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="container" appDnd (fileDropped)="onFileDropped($event)">
+    <input type="file" accept=".pdf" #fileDropRef id="fileDropRefU" multiple (change)="fileBrowseHandler($event)"
+      title="" />
+    <mat-icon>cloud_upload</mat-icon>
+    <p>Arrastre y suelte sus archivos aqui</p>
+    <p>o</p>
+    <button class="button-drop" for="fileDropRef">Seleccionar archivo</button>
+  </div>
+  <div class="files-list">
+    <div class="single-file" *ngFor="let file of filesList; let i = index">
+      <div class="info">
+        <h4 class="name">
+          OK
+        </h4>
+        <p class="size">
+          OK
+        </p>
+      </div>
+      <div (click)="deleteFile(i)">
+        <span style="color: #a8a6a6;" class="material-icons">delete_forever</span>
+      </div>
+    </div>
+  </div>
+  <div class="fila botones-fila">
+    <button mat-raised-button color="primary" class="btn-buscar" (click)="cancelar()">Cancelar</button>
+    <button mat-raised-button color="primary" class="btn-buscar" (click)="guardar()">Guardar</button>
+  </div>
+</mat-dialog-content>

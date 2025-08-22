@@ -1,0 +1,405 @@
+@use '../../../../../styles.scss' as styles;
+
+/*Div titulo*/
+.div_title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.section_title {
+    width: 90%;
+    padding: 10px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.div_close {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*div content*/
+
+.dialog_content {
+    border-color: #0000003d !important;
+    border: solid 1px;
+    border-left: none;
+    border-right: none;
+    height: 450px;
+}
+
+.container {
+    padding: 2rem;
+    text-align: center;
+    border: dashed 2px #979797;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 25px;
+
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #38424c;
+    }
+}
+
+.icon_upload {
+    color: #00588A;
+}
+
+.button-drop {
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #00588A;
+}
+
+.button-drop:hover {
+    background-color: #00588A;
+    box-shadow: 0 4px 8px #00578a99;
+}
+
+.files-list {
+    padding: 20px;
+
+    .single-file {
+        display: flex;
+        padding: 0.5rem;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .delete {
+            display: flex;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+
+
+        display: flex;
+        flex-grow: 1;
+
+        .name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #353f4a;
+            margin: 0;
+        }
+
+        .size {
+            font-size: 12px;
+            font-weight: 500;
+            color: #a4a4a4;
+            margin: 0;
+            margin-bottom: 0.25rem;
+        }
+
+        .info {
+            width: 100%
+        }
+    }
+}
+
+.span_icon {
+    color: #a8a6a6;
+}
+
+.icon_file {
+    width: 50px
+}
+
+/**/
+.div_dialog_actions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.btn {
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: styles.$primary-darkcyan;
+}
+
+.btn:hover {
+    background-color: styles.$primary-darkcyan;
+    box-shadow: 0 4px 8px styles.$dark-darkcyan;
+}
+
+.btn_save {
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    background-color: styles.$primary-darkcyan;
+}
+
+.btn_save:disabled,
+.btn_save[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+
+    .title {
+        font-size: 18px;
+    }
+
+    .icon_upload {
+        font-size: 80px;
+        height: 80px;
+        width: 80px;
+    }
+
+    .button-drop {
+        width: 150px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .btn {
+        width: 120px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .btn_save {
+        width: 120px;
+        height: 25px;
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+    .title {
+        font-size: 18px;
+    }
+
+    .icon_upload {
+        font-size: 80px;
+        height: 80px;
+        width: 80px;
+    }
+
+    .button-drop {
+        width: 150px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .btn {
+        width: 120px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .btn_save {
+        width: 120px;
+        height: 25px;
+        font-size: 11px;
+    }
+}
+
+/* Tablet */
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 700px !important;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .icon_upload {
+        font-size: 80px;
+        height: 80px;
+        width: 80px;
+    }
+
+    .button-drop {
+        width: 180px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .btn {
+        width: 180px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .btn_save {
+        width: 180px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+    ::ng-deep .cdk-overlay-container {
+        overflow-y: scroll;
+    }
+
+    ::ng-deep .cdk-overlay-backdrop {
+        position: fixed;
+    }
+
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 700px !important;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .dialog_content {
+        max-height: 350px;
+    }
+
+    .icon_upload {
+        font-size: 50px;
+        height: 50px;
+        width: 50px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .files-list {
+        padding: 10px;
+    }
+
+    .button-drop {
+        width: 150px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .btn {
+        width: 180px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .btn_save {
+        width: 180px;
+        height: 25px;
+        font-size: 11px;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+    ::ng-deep .cdk-overlay-container {
+        overflow-y: scroll;
+    }
+
+    ::ng-deep .cdk-overlay-backdrop {
+        position: fixed;
+    }
+
+    ::ng-deep .mat-mdc-dialog-container {
+        width: 700px !important;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .dialog_content {
+        max-height: 400px;
+    }
+
+    .icon_upload {
+        font-size: 100px;
+        height: 100px;
+        width: 100px;
+    }
+
+    .files-list {
+        padding: 10px;
+    }
+
+    .button-drop {
+        width: 200px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .btn {
+        width: 200px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .btn_save {
+        width: 200px;
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {
+    .div_dialog {
+        width: 90dvh;
+    }
+
+    .title {
+        font-size: 25px;
+    }
+
+    .icon_upload {
+        font-size: 100px;
+        height: 100px;
+        width: 100px;
+    }
+
+    .button-drop {
+        width: 200px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 200px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .btn_save {
+        width: 200px;
+        height: 30px;
+        font-size: 14px;
+    }
+}

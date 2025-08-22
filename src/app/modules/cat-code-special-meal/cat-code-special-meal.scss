@@ -1,0 +1,321 @@
+@use '../../../styles.scss' as styles;
+
+.div_header {
+  display: flex;
+  align-items: center;
+  background-image: url("../../../assets/images/Menu/SpecialMeal.png");
+  background-size: cover;
+  background-position: center;
+  background-color: #ffffff70;
+  background-blend-mode: overlay;
+}
+
+.text_title {
+  padding: 20px;
+  color: styles.$primary-blue;
+}
+
+.div_container {
+  min-height: 68dvh;
+  width: 100%;
+}
+
+.div_breadcrumb {
+  padding: 15px;
+  font-size: 13px;
+}
+
+.a_ayb {
+  color: #07e7cc;
+  font-weight: bold;
+}
+
+.container_table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.div_table {
+  width: 80%;
+  margin-bottom: 2%;
+}
+
+.mat-mdc-header-cell,
+.mat-mdc-cell {
+  justify-content: center;
+  text-align: center;
+}
+
+.mat-mdc-header-row {
+  background-color: styles.$primary-blue;
+  color: styles.$white;
+}
+
+/* Estilos para botones en las tablas */
+.btn_table {
+  background-color: #007CC2;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat_icon {
+  position: absolute;
+  color: #fff;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+  .home_container {
+    min-height: 91dvh;
+  }
+
+  .div_header {
+    height: 150px;
+  }
+
+  .text_title {
+    font-size: 20px;
+  }
+
+  .div_table {
+    width: 90%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .mat-mdc-header-cell {
+    min-width: 94px;
+  }
+
+  .mat-mdc-header-row {
+    font-size: 12px;
+  }
+
+  .mat-mdc-row,
+  .mdc-data-table__content {
+    font-size: 12px;
+  }
+
+  .mat-mdc-paginator {
+    max-height: 60px;
+  }
+
+  /* Estilos para botones en las tablas */
+  .btn_table {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .mat_icon {
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* Landscape Phone */
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+  .div_header {
+    height: 130px;
+  }
+
+  .text_title {
+    font-size: 20px;
+  }
+
+  /*Estilos de la tabla y paginador*/
+  .div_table {
+    width: 95%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .mat-mdc-header-cell {
+    min-width: 94px;
+  }
+
+  .mat-mdc-header-row {
+    font-size: 12px;
+  }
+
+  .mat-mdc-row,
+  .mdc-data-table__content {
+    font-size: 12px;
+  }
+
+  .mat-mdc-paginator {
+    max-height: 60px;
+  }
+
+  /* Estilos para botones en las tablas */
+  .btn_table {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .mat_icon {
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* Tablet Portrait */
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+  .home_container {
+    min-height: 90.2dvh;
+  }
+
+  .div_header {
+    height: 150px;
+  }
+
+  .text_title {
+    font-size: 30px;
+  }
+
+  /*Estilos de la tabla y paginador*/
+  .div_table {
+    width: 90%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .mat-mdc-header-cell {
+    min-width: 94px;
+  }
+
+  .mat-mdc-header-row {
+    font-size: 12px;
+  }
+
+  .mat-mdc-row,
+  .mdc-data-table__content {
+    font-size: 12px;
+  }
+
+  .mat-mdc-paginator {
+    max-height: 60px;
+  }
+
+  /* Estilos para botones en las tablas */
+  .btn_table {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .mat_icon {
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* Tablet Landscape */
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+  .home_container {
+    min-height: 87dvh;
+  }
+
+  .div_header {
+    height: 120px;
+  }
+
+  .text_title {
+    font-size: 20px;
+  }
+
+  /*Estilos de la tabla y paginador*/
+  .div_table {
+    width: 90%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .mat-mdc-header-cell {
+    min-width: 94px;
+  }
+
+  .mat-mdc-header-row {
+    font-size: 12px;
+  }
+
+  .mat-mdc-row,
+  .mdc-data-table__content {
+    font-size: 12px;
+  }
+
+  .mat-mdc-paginator {
+    max-height: 60px;
+  }
+
+  /* Estilos para botones en las tablas */
+  .btn_table {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .mat_icon {
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+  .home_container {
+    min-height: 90dvh;
+  }
+
+  .div_header {
+    height: 150px;
+  }
+
+  .text_title {
+    font-size: 30px;
+  }
+
+  /*Estilos de la tabla y paginador*/
+  .div_table {
+    width: 90%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .mat-mdc-header-cell {
+    min-width: 94px;
+  }
+}
+
+/* Monitors */
+@media only screen and (min-width:1290px) {
+
+  .home_container {
+    //height: 100%;
+    min-height: 90.1dvh;
+  }
+
+  .div_header {
+    height: 200px;
+    width: 100%;
+  }
+}

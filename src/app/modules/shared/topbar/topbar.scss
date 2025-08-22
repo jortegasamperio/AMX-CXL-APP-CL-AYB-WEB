@@ -1,0 +1,413 @@
+@use '../../../../styles.scss' as styles;
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.drawer_container {
+  height: 100dvh;
+}
+
+/*#################### estilos del menu lateral mat_drawer ####################*/
+.mat_drawer {
+  background-color: #fff;
+}
+
+.div_menu {
+  background-color: #020c41;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  //padding: 20px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.div_button_menu {
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+}
+
+.div_button_menu:hover {
+  background-color: #76757586;
+}
+
+.button_menu {
+  color: #fff !important;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 4%;
+}
+
+.div_info {
+  height: 50%;
+  width: 100%;
+  background-color: #fff;
+}
+
+.div_menu_lateral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.btn_home {
+  color: #0b172f;
+  background: transparent;
+  cursor: pointer;
+  border: inherit;
+  font: 120% sans-serif;
+  align-content: center;
+  margin-bottom: 6%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  width: 100%;
+}
+
+.div_info_data {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.label_date {
+  margin-top: 5%;
+}
+
+.image_info {
+  height: 20%;
+  width: 20%;
+}
+
+.btn_logout {
+  color: #0b172f;
+  background: transparent;
+  cursor: pointer;
+  border: inherit;
+  font: 120% sans-serif;
+  //align-content: center;
+  margin-bottom: 6%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logOut {
+  font-size: 16px !important;
+  margin-right: 2%;
+}
+
+/*#################### estilos del header topbar ####################*/
+
+.topbar {
+  background-color: styles.$primary-blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  z-index: 1000;
+}
+
+.img_logo_am {
+  margin-left: 1%;
+  background: none;
+  border: none;
+  width: 12%;
+}
+
+.profile-container {
+
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+  .user_icon {
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+
+  .username {
+    color: white;
+    font-weight: 300;
+    margin-right: 20px;
+  }
+
+  .menu_icon {
+    color: #fff;
+  }
+}
+
+
+
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+
+  /*#################### estilos del menu lateral mat_drawer ####################*/
+  .mat_drawer {
+    width: 50%;
+  }
+
+  .div_menu {
+    height: 350px;
+  }
+
+  .button_menu {
+    font-size: 12px;
+  }
+
+  .div_info {
+    height: 300px;
+  }
+
+  .btn_home {
+    font-size: 13px;
+  }
+
+  .icon_home {
+    font-size: 20px;
+  }
+
+  .label_info {
+    font-size: 14px;
+  }
+
+  .label_date {
+    font-size: 14px;
+  }
+
+  .image_info {
+    height: 30%;
+    width: 30%;
+  }
+
+  .logOut {
+    font-size: 14px !important;
+  }
+
+  .icon_logout {
+    font-size: 18px;
+  }
+
+  /*#################### estilos del header topbar ####################*/
+  .topbar {
+    height: 40px;
+  }
+
+  .img_logo_am {
+    width: 35%;
+  }
+
+  .user_icon {
+    display: none !important;
+  }
+
+  .username {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+  /*#################### estilos del menu lateral mat_drawer ####################*/
+  .mat_drawer {
+    width: 50%;
+  }
+
+  .div_menu {
+    height: 250px;
+  }
+
+  .button_menu {
+    font-size: 12px;
+  }
+
+  .div_info {
+    height: 50%;
+  }
+
+  .btn_home {
+    font-size: 14px;
+  }
+
+  .icon_home {
+    font-size: 20px;
+  }
+
+  .label_info {
+    font-size: 15px;
+  }
+
+  .label_date {
+    font-size: 15px;
+  }
+
+  /*#################### estilos del header topbar ####################*/
+  .topbar {
+    height: 45px;
+  }
+
+  .img_logo_am {
+    width: 25%;
+  }
+
+  .profile-container {
+    gap: 0px;
+  }
+
+  .user_icon {
+    font-size: 20px;
+  }
+
+  .username {
+    font-size: 14px;
+  }
+
+  .menu_icon {
+    font-size: 20px;
+  }
+
+}
+
+
+/* Tablet */
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+  /*#################### estilos del menu lateral mat_drawer ####################*/
+  .mat_drawer {
+    width: 40%;
+  }
+
+  .div_menu {
+    height: 450px;
+  }
+
+  .div_info {
+    height: 300px;
+  }
+
+  /*#################### estilos del header topbar ####################*/
+  .topbar {
+    height: 45px;
+  }
+
+  .img_logo_am {
+    width: 20%;
+  }
+
+  .profile-container {
+    gap: 0px;
+  }
+
+  .user_icon {
+    font-size: 20px;
+  }
+
+  .username {
+    font-size: 14px;
+  }
+
+  .menu_icon {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+
+  /*#################### estilos del menu lateral mat_drawer ####################*/
+  .mat_drawer {
+    width: 40%;
+  }
+
+  .div_menu {
+    height: 400px;
+  }
+
+  .div_info {
+    height: 300px;
+  }
+
+   /*#################### estilos del header topbar ####################*/
+  .topbar {
+    height: 50px;
+  }
+
+  .img_logo_am {
+    width: 20%;
+  }
+
+  .profile-container {
+    gap: 3px;
+  }
+
+  .user_icon {
+    font-size: 20px;
+  }
+
+  .username {
+    font-size: 13px;
+  }
+}
+
+/* Desktop */
+
+@media only screen and (min-width:840px) and (max-width: 1289px) {
+  /*#################### estilos del menu lateral mat_drawer ####################*/
+  .mat_drawer {
+    width: 30%;
+  }
+
+  .div_menu {
+    height: 400px;
+  }
+
+  .div_info {
+    height: 300px;
+  }
+  /*#################### estilos del header topbar ####################*/
+  .topbar {
+    height: 55px;
+  }
+
+  .img_logo_am {
+    width: 18%;
+  }
+
+  .username {
+    font-size: 17px;
+  }
+}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {
+  /*#################### estilos del menu lateral mat_drawer ####################*/
+
+  .mat_drawer {
+    width: 20%;
+  }
+
+  /*#################### estilos del contenedor de los componentes container ####################*/
+
+  /* .div_cointainer {
+    height: 93%;
+  } */
+}

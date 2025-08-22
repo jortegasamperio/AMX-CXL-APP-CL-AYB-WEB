@@ -1,0 +1,11 @@
+<mat-dialog-content>
+  <div class="fila titulo-fila">
+    <h2 class="titulo">Totem: {{data.code}}</h2>
+    <span matButton (click)="close()" class="icon-close">
+      <mat-icon>close</mat-icon>
+    </span>
+  </div>
+  <div>
+    <img [src]="imageSm" style="max-width: 100%; height: auto;">
+  </div>
+</mat-dialog-content>

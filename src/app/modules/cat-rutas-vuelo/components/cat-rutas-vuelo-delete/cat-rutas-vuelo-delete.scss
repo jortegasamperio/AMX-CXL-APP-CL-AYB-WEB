@@ -1,0 +1,94 @@
+.popup-container {
+  width: 900px;
+  height: 600px;
+}
+
+.fila {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.titulo-fila {
+  justify-content: space-between;
+  padding-bottom: 10%;
+}
+
+.titulo {
+  margin: 0;
+}
+
+.campo {
+  flex: 1;
+}
+
+.botones-fila {
+  justify-content: center;
+  padding-top: 15%;
+}
+
+.btn-buscar {
+  margin-inline: 60px;
+  border-radius: 20px;
+  padding: 6px 50px;
+  font-weight: 500;
+  width: 300px;
+}
+
+/* Phone */
+@media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+
+  .popup-container {
+    width: 90%;
+    height: auto;
+  }
+
+  .fila {
+    flex-direction: column;
+    gap: 12px;
+    align-items: end;
+  }
+
+  .btn-buscar {
+    width: 100%;
+    margin-inline: 0;
+    padding: 10px 0;
+  }
+
+  .botones-fila {
+    padding-top: 10%;
+  }
+}
+
+@media only screen and (max-width: 599px) and (orientation: landscape) {
+
+  .popup-container {
+    width: 95%;
+    height: auto;
+  }
+
+  .fila {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .btn-buscar {
+    width: 100%;
+    margin-inline: 0;
+  }
+}
+
+
+/* Tablet */
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {}
+
+@media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {}
+
+/* Desktop */
+
+@media only screen and (min-width:840px) and (max-width: 1289px) {}
+
+/*Monitors*/
+@media only screen and (min-width:1290px) {}

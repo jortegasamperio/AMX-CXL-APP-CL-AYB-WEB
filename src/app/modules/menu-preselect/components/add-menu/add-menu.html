@@ -1,0 +1,177 @@
+<div class="container">
+    <form class="formulario" [formGroup]="form" (ngSubmit)="save()">
+        <!-- Campos globales que comparten todos los platillos para identificar el menú -->
+        <div class="form_global">
+            <mat-form-field class="mat_form" appearance="outline">
+                <mat-label>No. Vuelo</mat-label>
+                <mat-select (selectionChange)="change($event)" formControlName="flightNumber">
+                    @for (vuelo of dataFlights(); track trackByIndex($index)) {
+                    <mat-option [value]="vuelo.flightNumber">
+                        {{vuelo.flightNumber}}
+                    </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="mat_form" appearance="outline">
+                <mat-label>Fecha inicio de Ciclo</mat-label>
+                <input matInput [matDatepicker]="dp" [min]="minDate()" [max]="maxDate()" formControlName="mesCicloIni"
+                    [readonly]="true">
+                <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp startView="multi-year"
+                    (monthSelected)="setMonthAndYear($event, dp, form.controls.mesCicloIni)"
+                    panelClass="example-month-picker">
+                </mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="mat_form" appearance="outline">
+                <mat-label>Fecha fin de Ciclo</mat-label>
+                <input matInput [matDatepicker]="dpf" [min]="minDate()" [max]="maxDate()" formControlName="mesCicloFin"
+                    [readonly]="true">
+                <mat-datepicker-toggle matIconSuffix [for]="dpf"></mat-datepicker-toggle>
+                <mat-datepicker #dpf startView="multi-year"
+                    (monthSelected)="setMonthAndYear($event, dpf, form.controls.mesCicloFin)"
+                    panelClass="example-month-picker">
+                </mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="platillo_add">
+            <button class="add_platillo_btn" type="button" (click)="addPlatillo()">Agregar platillo</button>
+        </div>
+        <!-- Formulario dinámico que identifica cada platillo del menú -->
+        <div formArrayName="platillo">
+            @for (
+            control of platilloArray.controls;
+            track control;
+            let index = $index
+            ) {
+            <!-- Formulario Platillos -->
+            <div class="div_expansion_panel" [formGroupName]="index">
+                <mat-expansion-panel [expanded]="true" (opened)="panelOpenState.set(false)"
+                    (closed)="panelOpenState.set(true)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Platillo No. {{index+1}}
+                            <div class="div_btn_delete">
+                                <button class="delete_platillo_btn" type="button" (click)="deletePlatillo(index)">
+                                    Delete
+                                </button>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="form_platillo">
+                        <mat-form-field class="mat_platillo" appearance="outline">
+                            <mat-label>Código de alimento</mat-label>
+                            <mat-select (selectionChange)="changeCodigo(index)" formControlName="codAlimento">
+                                @for (codAlimento of vueloByCode()?.foodCode; track codAlimento) {
+                                <mat-option [value]="codAlimento">
+                                    {{codAlimento}}
+                                </mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="mat_platillo" appearance="outline">
+                            <mat-label>Código de servicio</mat-label>
+                            <mat-select (selectionChange)="changeCodigo(index)" formControlName="codServicio">
+                                @for (codServicio of vueloByCode()?.foodService || []; track codServicio) {
+                                <mat-option [value]="codServicio">
+                                    {{codServicio}}
+                                </mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="mat_platillo" appearance="outline">
+                            <mat-label>Cabina</mat-label>
+                            <mat-select (selectionChange)="changeCodigo(index)" formControlName="cabina">
+                                @for (cabina of vueloByCode()?.cabyn || []; track cabina) {
+                                <mat-option [value]="cabina">
+                                    {{cabina}}
+                                </mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="mat_platillo" appearance="outline">
+                            <mat-label>Ciclo</mat-label>
+                            <mat-select (selectionChange)="changeCodigo(index)" formControlName="ciclo">
+                                @for (ciclo of vueloByCode()?.cycle || []; track ciclo) {
+                                <mat-option [value]="ciclo">
+                                    {{ciclo}}
+                                </mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="mat_platillo" appearance="outline">
+                            <mat-label>Opción</mat-label>
+                            <mat-select (selectionChange)="changeCodigo(index)" formControlName="opcion">
+                                @for (opcion of vueloByCode()?.option || []; track opcion) {
+                                <mat-option [value]="opcion">
+                                    {{opcion}}
+                                </mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="mat_platillo" appearance="outline">
+                            <mat-label>Tipo de menú</mat-label>
+                            <input matInput placeholder="Tipo de menú" maxlength="15" formControlName="tipoMenu" />
+                        </mat-form-field>
+                        <mat-form-field class="mat_platillo" appearance="outline">
+                            <mat-label>Código de preseleccion</mat-label>
+                            <input matInput placeholder="Código de preseleccion" formControlName="codPsml" />
+                        </mat-form-field>
+                        <div class="div_content_image">
+                            <mat-form-field class="mat_image" appearance="outline">
+                                <div class="div_img">
+                                    <mat-toolbar class="mat_toolbar_img">
+                                        <input matInput class="input_name" formControlName="nombreImg"
+                                            [readonly]="true" />
+                                    </mat-toolbar><!--[value]="getNameImg(index)"-->
+
+                                    <input class="input_img" type="file" id="fileInput" name="fileInput"
+                                        accept="image/*" (change)="selectFiles($event, index)" />
+                                </div>
+                            </mat-form-field>
+                            @if (!validateImgForm(index)) {
+                            <div class="message_error">
+                                Imagen requerida *
+                            </div>
+                            }
+                        </div>
+                        <div class="div_load_img">
+                            <img [id]="'img-' + index" alt="" class="preview">
+                        </div>
+                    </div>
+                    <!-- Tabs con los campos de Nombre y Descripción del platillo por idiomas -->
+                    <div class="div_tab_content">
+                        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+                            @for (tab of nombreCampos; track tab) {
+                            <mat-tab label="{{tab.tab_name}}">
+                                <div class="div_tab">
+                                    <div class="tab_input">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{tab.form[0].name}}</mat-label>
+                                            <input matInput placeholder="{{tab.form[0].name}}"
+                                                formControlName="{{tab.form[0].control_Name}}" maxlength="120"
+                                                onkeydown="return /[a-zA-ZÀ-ÿ, ]/i.test(event.key)">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="tab_textarea">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{tab.form[1].name}}</mat-label>
+                                            <textarea matInput placeholder="{{tab.form[1].name}}"
+                                                formControlName="{{tab.form[1].control_Name}}" maxlength="255"
+                                                onkeydown="return /[a-zA-ZÀ-ÿ, ]/i.test(event.key)"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            }
+                        </mat-tab-group>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+            }
+        </div>
+        <div class="platillo_save">
+            <button class="btn" type="button" (click)="redirectMenu()">Cancelar</button>
+            <button class="btn" mat-flat-button [disabled]="isButtonDisabled()">Guardar</button>
+        </div>
+    </form>
+</div>

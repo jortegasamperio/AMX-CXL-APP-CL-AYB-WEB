@@ -1,0 +1,44 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+$primary-blue: #020c41;
+$primary-pink: #f90674;
+$dark-pink: #d9005e;
+$white: white;
+$primary-darkcyan: #1B8198;
+$dark-darkcyan: #1b819881;
+$primary-DeepSkyBlue: #007CC2;
+$dark-DeepSkyBlue: #007CC2;
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+
+.mat-mdc-raised-button.mat-primary {
+  background-color: $primary-pink;
+}
+
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+html, body {
+  height: 100%;
+  font-family: Garnett-Regular, "Helvetica Neue", sans-serif
+}
+
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+
+
+:export {
+  primaryPink: $primary-pink;
+  darkPink: $dark-pink;
+  primaryBlue: $primary-blue;
+}

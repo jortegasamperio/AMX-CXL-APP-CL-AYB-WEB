@@ -1,0 +1,30 @@
+<!-- <h2 mat-dialog-title>Eliminar Platillo</h2>
+<mat-dialog-content>
+  <p>What's your favorite animal?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onNoClick()">No Thanks</button>
+  <button matButton [mat-dialog-close]="isDelete" cdkFocusInitial>Ok</button>
+</mat-dialog-actions> -->
+
+
+<div class="div_title">
+    <div class="section_title">
+        <h2 mat-dialog-title class="title">Eliminar Platillo</h2>
+    </div>
+    <div class="div_close">
+        <span matButton (click)="close()" class="icon-close">
+            <mat-icon>close</mat-icon>
+        </span>
+    </div>
+</div>
+<mat-dialog-content class="dialog_content">
+    ¿Está seguro de eliminar el platillo {{data.codigo}} del menú con numero de vuelo {{data.flightNumber}} del mes de ciclo 
+    {{data.mesCiclo}}/{{data.annio}}?
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="div_dialog_actions">
+        <button class="btn" (click)="close()">Cancelar</button>
+        <button class="btn" matButton [mat-dialog-close]="isDelete">Eliminar</button>
+    </div>
+</mat-dialog-actions>

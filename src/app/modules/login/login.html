@@ -1,0 +1,27 @@
+<section class="login-container">
+
+    <mat-card class="login-card">
+
+        <h1 class="login-title">Bienvenido</h1>
+
+        <div class="login_icon">
+            <div class="wrap">
+                <div class="logo_circle">
+                    <img class="image_logo" src="../../../assets/images/login_logo.png" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <h2 class="login-subtitle">Portal de alimentos y bebidas</h2>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+            <button type="submit" class="login-button">
+                Iniciar sesión
+            </button>
+
+        </form>
+
+    </mat-card>
+
+</section>
+<app-footer></app-footer>
