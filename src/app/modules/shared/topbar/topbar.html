@@ -30,8 +30,8 @@
   </mat-drawer>
   <!--mat-drawer-content es donde se encuentra todo el contenido de la vista-->
   <mat-drawer-content>
-    <mat-toolbar class="topbar">
-      <img class="img_logo_am" src="assets/images/Aeromexico_logo.png" alt="">
+    <mat-toolbar class="topbar" [routerLink]="['/alimentos-bebidas']">
+      <img class="img_logo_am zona-interactiva" src="assets/images/Aeromexico_logo.png" alt="">
       <div class="profile-container">
         <mat-icon class="user_icon">account_circle</mat-icon>
         <span class="username">

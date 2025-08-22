@@ -9,7 +9,6 @@ import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { RutasVuelo } from '../../../../data/cat-rutas-vuelo/cat-rutas-vuelo';
-import { CatRutasVueloService } from '../../../../services/cat-rutas-vuelo.service';
 
 
 @Component({
@@ -29,7 +28,7 @@ import { CatRutasVueloService } from '../../../../services/cat-rutas-vuelo.servi
   templateUrl: './cat-rutas-vuelo-detail.html',
   styleUrls: ['./cat-rutas-vuelo-detail.scss']
 })
-export class CatRutasVueloDetail implements OnInit {
+export class CatCodePreselectDetail implements OnInit {
 
   rutasVueloForm: FormGroup;
 
@@ -39,23 +38,8 @@ export class CatRutasVueloDetail implements OnInit {
 
   ngOnInit(): void {
     console.log('Datos recibidos:', this.data);
-    if (this.data?.id) {
-      this.loadRutaVueloDetails();
-    }
   }
 
-  loadRutaVueloDetails(): void {
-    this.rutasVueloService.getRutaVueloDetails(this.data.id).subscribe({
-      next: (response) => {
-        if (response.status === 200 && response.data) {
-          this.rutasVueloForm.patchValue(response.data);
-        }
-      },
-      error: (err) => {
-        console.error('Error loading ruta vuelo details:', err);
-      }
-    });
-  }
 
   onOptionChange(): void {
     console.log('Opción seleccionada:');
@@ -63,20 +47,19 @@ export class CatRutasVueloDetail implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private rutasVueloService: CatRutasVueloService,
-    public dialogRef: MatDialogRef<CatRutasVueloDetail>,
+    public dialogRef: MatDialogRef<CatCodePreselectDetail>,
     @Inject(MAT_DIALOG_DATA) public data: RutasVuelo
   ) {
     this.rutasVueloForm = this.fb.group({
-      carrier: [this.data?.carrier || ''],
-      region: [this.data?.region || ''],
-      flightNumber: [this.data?.flightNumber || ''],
-      departureAirport: [this.data?.departureAirport || ''],
-      arrivalAirport: [this.data?.arrivalAirport || ''],
-      group: [this.data?.group || ''],
-      iatacj: [this.data?.iatacj || ''],
-      iatacy: [this.data?.iatacy || ''],
-      preselect: [this.data?.preselect || ''],
+      carrier: [''],
+      region: [''],
+      flightNumber: [''],
+      departureStation: [''],
+      arrivalStation: [''],
+      group: [''],
+      opcion: [''],
+      descripcion: [''],
+      preselect: [''],
       comentarios: ['']
     });
 
@@ -84,10 +67,14 @@ export class CatRutasVueloDetail implements OnInit {
   }
 
   cancelar(): void {
-    this.dialogRef.close({ action: 'cerrar' });
+    this.dialogRef.close({ action: 'cancelado' });
+  }
+
+  guardar(): void {
+    this.dialogRef.close({ action: 'guardado', data: this.rutasVueloForm.value });
   }
 
   cerrar(): void {
-    this.dialogRef.close({ action: 'cerrar' });
+    this.dialogRef.close({ action: 'cerrado' });
   }
 }

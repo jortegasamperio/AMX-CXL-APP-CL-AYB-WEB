@@ -1,92 +1,94 @@
-<div>
-  <div>
-    <section [ngStyle]="{ 'background-image': 'url(' + image + ')' }" class="titleCat">
-      <h1 class="titleComponent">Catálogo de alimentos</h1>
-    </section>
+<div class="home_container">
+  <div class="div_header">
+    <h1 class="text_title">Catálogo de alimentos</h1>
+  </div>    
+  <div class="div_breadcrumb" [routerLink]="['/alimentos-bebidas']">
+    <a>Inicio</a><a><mat-icon class="zona-interactiva" style="padding-top: 4px;" fontIcon="home"></mat-icon> / </a><a class="a_ayb">Catálogo de alimentos</a>
   </div>
-</div>
-<h3 style="padding-top: 2%;">Inicio<mat-icon style="vertical-align: middle;">home</mat-icon>/Catálogo de alimentos</h3>
-<mat-card class="search-card">
-  <div class="card-header">
-    <mat-card-title>Buscador Avanzado</mat-card-title>
-    <button mat-icon-button (click)="toggleContenido()" aria-label="Toggle">
-      <mat-icon>{{ mostrarContenido ? 'expand_less' : 'expand_more' }}</mat-icon>
-    </button>
-  </div>
-  <div>
-    <mat-card-content *ngIf="mostrarContenido">
-      <form [formGroup]="searchForm" class="search-form-horizontal">
-        <div class="search-field-wrapper">
-          <label class="field-label">Estación de salida</label>
-          <mat-form-field appearance="outline" class="search-field">
-            <input matInput formControlName="departureStation">
-          </mat-form-field>
+
+
+    <div class="container_table">
+      <div class="div_expansion_panel">
+        <mat-expansion-panel class="expansion_panel" (opened)="panelOpenState.set(true)"
+                (closed)="panelOpenState.set(false)">
+                <mat-expansion-panel-header style="padding: 20px;">
+                    <mat-panel-title>
+                        Buscador Avanzado <!-- <mat-icon class="icon_search">search</mat-icon> -->
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>
+                  <form [formGroup]="searchForm" class="search-form-horizontal">
+                    <div class="search-field-wrapper">
+                      <label class="field-label">Estación de salida</label>
+                      <mat-form-field appearance="outline" class="search-field">
+                        <input matInput formControlName="departureStation">
+                      </mat-form-field>
+                    </div>
+                    <div class="search-field-wrapper">
+                      <label class="field-label">Código Preselección</label>
+                      <mat-form-field appearance="outline" class="search-field">
+                        <input matInput formControlName="code">
+                      </mat-form-field>
+                    </div>
+                    <div class="search-field-wrapper">
+                      <label class="field-label">Ciclo</label>
+                      <mat-form-field appearance="outline" class="search-field">
+                        <input matInput formControlName="cycle">
+                      </mat-form-field>
+                    </div>
+                    <div class="botones-fila">
+                      <button class="search_btn" (click)="advancedSearch()">
+                        Buscar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+        </mat-expansion-panel>
+      </div>
+          <!-- Botones de carga -->
+        <div class="div_upload">
+          <button  class="upload_btn" (click)="abrirPopupBulk()">Carga masiva</button>
+          <button class="upload_btn" (click)="abrirPopup()">Agregar</button>
         </div>
-        <div class="search-field-wrapper">
-          <label class="field-label">Código Preselección</label>
-          <mat-form-field appearance="outline" class="search-field">
-            <input matInput formControlName="code">
-          </mat-form-field>
+            <!-- Table -->
+        <div class="div_table">
+            <table mat-table [dataSource]="dataSource" matSort class="full-width-table">
+              <ng-container *ngFor="let col of columns" [matColumnDef]="col.field">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-header-style">{{ col.header }}</th>
+                <td mat-cell *matCellDef="let reg" class="styleTable center uppercase">
+                  {{ reg[col.field] }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="detail">
+                <th mat-header-cell *matHeaderCellDef class="custom-header-style">Detalle</th>
+                <td mat-cell *matCellDef="let reg" class="center">
+                  <button mat-icon-button color="primary" (click)="abrirPopupDetail(reg)">
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef class="custom-header-style">Editar</th>
+                <td mat-cell *matCellDef="let reg" class="center">
+                  <button mat-icon-button color="primary" (click)="abrirPopupEdit(reg)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef class="custom-header-style">Eliminar</th>
+                <td mat-cell *matCellDef="let reg" class="center">
+                  <button mat-icon-button color="primary" (click)="abrirPopupDelete(reg)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageSizeOptions]="pageSizes"
+              (page)="onPageChange($event)">
+            </mat-paginator>        
         </div>
-        <div class="search-field-wrapper">
-          <label class="field-label">Ciclo</label>
-          <mat-form-field appearance="outline" class="search-field">
-            <input matInput formControlName="cycle">
-          </mat-form-field>
-        </div>
-        <div class="botones-fila">
-          <button mat-raised-button color="primary" class="btn-buscar" (click)="advancedSearch()">
-            Buscar
-          </button>
-        </div>
-      </form>
-    </mat-card-content>
-  </div>
-</mat-card>
-<div style="display: flex; justify-content: flex-end; gap: 8px; width: 90%; margin-top: 15px; padding-bottom: 1%;">
-  <button mat-raised-button color="accent" class="btn-buscar" (click)="abrirPopupBulk()">
-    Carga masiva
-  </button>
-  <button mat-raised-button color="accent" class="btn-buscar" (click)="abrirPopup()">
-    Agregar
-  </button>
-</div>
-<div class="mat-elevation-z3 table-wrapper">
-  <table mat-table [dataSource]="dataSource" matSort class="full-width-table">
-    <ng-container *ngFor="let col of columns" [matColumnDef]="col.field">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-header-style">{{ col.header }}</th>
-      <td mat-cell *matCellDef="let reg" class="styleTable center uppercase">
-        {{ reg[col.field] }}
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="detail">
-      <th mat-header-cell *matHeaderCellDef class="custom-header-style">Detalle</th>
-      <td mat-cell *matCellDef="let reg" class="center">
-        <button mat-icon-button color="primary" (click)="abrirPopupDetail(reg)">
-          <mat-icon>visibility</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef class="custom-header-style">Editar</th>
-      <td mat-cell *matCellDef="let reg" class="center">
-        <button mat-icon-button color="primary" (click)="abrirPopupEdit(reg)">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef class="custom-header-style">Eliminar</th>
-      <td mat-cell *matCellDef="let reg" class="center">
-        <button mat-icon-button color="primary" (click)="abrirPopupDelete(reg)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageSizeOptions]="pageSizes"
-    (page)="onPageChange($event)">
-  </mat-paginator>
+    </div>
 </div>

@@ -1,25 +1,9 @@
 <div class="home-container">
   <div class="cards-container">
-  <!--   <div *ngFor="let item of  cardItems">
-      <mat-card class="card-item">
-        <mat-card-header>
-          <div class="card-icon-container">
-            <mat-icon class="card-icon">{{item.icon}}</mat-icon>
-          </div>
-        </mat-card-header>
-
-        <div class="card-content">
-          <span class="span_desc">{{item.description}}</span>
-        </div>
-        <div class="div_button">
-          <button matButton="filled" class="button_card">{{item.title}}</button>
-        </div>
-      </mat-card>
-    </div> -->
     <div *ngFor="let item of  cardItems">
       <div class="container-glass">
         <div class="div_img">
-        <img class="img" src="{{item.icon}}" alt="">
+          <img class="img" src="{{item.icon}}" alt="">
         </div>
         <p class="text">
           {{item.description}}

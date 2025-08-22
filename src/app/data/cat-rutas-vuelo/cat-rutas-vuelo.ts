@@ -1,13 +1,8 @@
 export interface RutasVuelo {
-    id: number;
-    carrier: string;
     region: string;
     flightNumber: string;
-    departureAirport: string;
-    arrivalAirport: string;
-    group: string;
-    iatacj: string;
-    iatacy: string;
+    departureStation: string;
+    arrivalStation: string;
     preselect: string;
     specialMeal: string;
 }

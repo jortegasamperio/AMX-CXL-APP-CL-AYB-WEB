@@ -1,5 +1,6 @@
-import { Component, ViewChild, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy, ChangeDetectorRef, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, PageEvent, MatPaginator } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
@@ -8,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { CatCodePreselectAdd } from './components/cat-code-preselect-add/cat-code-preselect-add';
 import { CatCodePreselectEdit } from './components/cat-code-preselect-edit/cat-code-preselect-edit';
 import { CatCodePreselectDelete } from './components/cat-code-preselect-delete/cat-code-preselect-delete';
@@ -30,12 +32,17 @@ import { Subject, takeUntil, catchError, of } from 'rxjs';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    RouterModule
   ],
   templateUrl: './cat-code-preselect.html',
   styleUrls: ['./cat-code-preselect.scss']
 })
 export class CatCodePreselect implements OnInit, OnDestroy {
+
+    // Signals para estado reactivo
+  readonly panelOpenState = signal(false);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -165,15 +172,15 @@ export class CatCodePreselect implements OnInit, OnDestroy {
     });
   }
 
-  image = '../../assets/images/Menu/Preselect.png';
+  //image = '../../assets/images/Menu/Preselect.png';
 
   catalogs: CatalogoAlimentos[] = [];
   colsPreselect = [
-    { field: 'departureStation', header: 'Estacion Salida' },
-    { field: 'code', header: 'Codigo Preseleccion' },
+    { field: 'departureStation', header: 'Estación Salida' },
+    { field: 'code', header: 'Código Preselección' },
     { field: 'cycle', header: 'Ciclo' },
     { field: 'createdBy', header: 'Creado Por' },
-    { field: 'createdDate', header: 'Fecha Creacion' }
+    { field: 'createdDate', header: 'Fecha Creación' }
   ];
 
   languageGlobal = {

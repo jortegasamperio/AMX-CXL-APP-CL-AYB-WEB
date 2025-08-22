@@ -19,7 +19,7 @@ export class Home implements OnInit {
     {
       title: 'Vuelos',
       icon: '../../../assets/images/Menu/Vuelos.png',
-      description: 'Administración del catalogo de los vuelos con sus rutas',
+      description: 'Administración del catálogo de los vuelos con sus rutas',
       url_view: '/alimentos-bebidas/cat-rutas-vuelo'
     },
     {

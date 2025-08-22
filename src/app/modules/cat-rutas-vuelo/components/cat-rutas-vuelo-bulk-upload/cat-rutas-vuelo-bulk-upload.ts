@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { RutasVuelo } from '../../../../data/cat-rutas-vuelo/cat-rutas-vuelo';
-import { CatRutasVueloService } from '../../../../services/cat-rutas-vuelo.service';
 
 
 @Component({
@@ -30,7 +29,7 @@ import { CatRutasVueloService } from '../../../../services/cat-rutas-vuelo.servi
   templateUrl: './cat-rutas-vuelo-bulk-upload.html',
   styleUrls: ['./cat-rutas-vuelo-bulk-upload.scss']
 })
-export class CatRutasVueloBulkUpload {
+export class CatCodePreselectBulkUpload {
 
   @Output()
   public eventCatManual: EventEmitter<boolean> = new EventEmitter();
@@ -46,38 +45,18 @@ export class CatRutasVueloBulkUpload {
   }
 
   constructor(
-    private rutasVueloService: CatRutasVueloService,
-    public dialogRef: MatDialogRef<CatRutasVueloBulkUpload>,
+    public dialogRef: MatDialogRef<CatCodePreselectBulkUpload>,
     @Inject(MAT_DIALOG_DATA) public data: RutasVuelo
   ) { }
 
   cancelar(): void {
-    this.dialogRef.close({ action: 'cerrar' });
+    this.dialogRef.close({ action: 'cancelado' });
   }
 
-  guardar(): void {
-    if (this.filesList.length > 0) {
-      const formData = new FormData();
-      this.filesList.forEach((fileWrapper, index) => {
-        formData.append('files', fileWrapper.file);
-      });
-
-      this.rutasVueloService.addRutaByFile(formData).subscribe({
-        next: (data) => {
-          if (data.status == 200) {
-            console.log('Archivo de rutas de vuelo procesado');
-            this.dialogRef.close({ action: 'cerrar', data: formData });
-          }
-        },
-        error: (err) => {
-          console.error('Error procesando archivo de rutas de vuelo:', err);
-        },
-      });
-    }
-  }
+  guardar(): void {}
 
   cerrar(): void {
-    this.dialogRef.close({ action: 'cerrar' });
+    this.dialogRef.close({ action: 'cerrado' });
   }
 
   onFileDropped($event: any): void {

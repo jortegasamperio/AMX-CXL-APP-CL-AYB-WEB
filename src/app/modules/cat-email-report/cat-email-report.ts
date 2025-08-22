@@ -1,5 +1,6 @@
 import { Component, signal, inject, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -39,7 +40,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatCardModule,
     MatOptionModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    RouterModule
   ],
   templateUrl: './cat-email-report.html',
   styleUrls: ['./cat-email-report.scss']
@@ -255,13 +257,13 @@ export class CatEmailReport implements OnInit, OnDestroy {
 
   private loadColumnsName(): void {
     const baseColumns: TableColumn[] = [
-      { field: 'email', header: 'Correo Electronico' },
+      { field: 'email', header: 'Correo Electrónico' },
       { field: 'status', header: 'Estatus' }
     ];
 
     this.emailCols = this.headerReportType === 3 
       ? [
-          { field: 'email', header: 'Correo Electronico' },
+          { field: 'email', header: 'Correo Electrónico' },
           { field: 'station', header: 'Estación' },
           { field: 'status', header: 'Estatus' }
         ]

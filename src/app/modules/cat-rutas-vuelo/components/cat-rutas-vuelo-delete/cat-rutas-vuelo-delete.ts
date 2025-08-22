@@ -9,7 +9,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { RutasVuelo } from '../../../../data/cat-rutas-vuelo/cat-rutas-vuelo';
-import { CatRutasVueloService } from '../../../../services/cat-rutas-vuelo.service';
 
 
 @Component({
@@ -30,47 +29,24 @@ import { CatRutasVueloService } from '../../../../services/cat-rutas-vuelo.servi
   templateUrl: './cat-rutas-vuelo-delete.html',
   styleUrls: ['./cat-rutas-vuelo-delete.scss']
 })
-export class CatRutasVueloDelete {
+export class CatCodePreselectDelete {
 
   onOptionChange(): void {
     console.log('Opción seleccionada:');
   }
 
-  flightNumber: string;
-  departureAirport: string;
-  arrivalAirport: string;
-
   constructor(
-    private rutasVueloService: CatRutasVueloService,
-    public dialogRef: MatDialogRef<CatRutasVueloDelete>,
+    public dialogRef: MatDialogRef<CatCodePreselectDelete>,
     @Inject(MAT_DIALOG_DATA) public data: RutasVuelo
-  ) {
-    this.flightNumber = this.data.flightNumber;
-    this.departureAirport = this.data.departureAirport;
-    this.arrivalAirport = this.data.arrivalAirport;
-  }
+  ) {}
 
   cancelar(): void {
-    this.dialogRef.close({ action: 'cerrar' });
+    this.dialogRef.close({ action: 'cancelado' });
   }
 
-  eliminar(): void {
-    if (this.data?.id) {
-      this.rutasVueloService.deleteRutaVuelo(this.data.id).subscribe({
-        next: (data) => {
-          if (data.status == 200) {
-            console.log('Ruta de vuelo eliminada');
-            this.dialogRef.close({ action: 'cerrar', data: this.data });
-          }
-        },
-        error: (err) => {
-          console.error('Error eliminando ruta de vuelo:', err);
-        },
-      });
-    }
-  }
+  guardar(): void {}
 
   cerrar(): void {
-    this.dialogRef.close({ action: 'cerrar' });
+    this.dialogRef.close({ action: 'cerrado' });
   }
 }

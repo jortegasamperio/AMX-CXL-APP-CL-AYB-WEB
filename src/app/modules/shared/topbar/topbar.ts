@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -12,7 +13,7 @@ import { CardItem } from '../../../data/home/card-item';
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, FooterModule, MatListModule, RouterOutlet],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, FooterModule, MatListModule, RouterOutlet, RouterModule],
   templateUrl: './topbar.html',
   styleUrl: './topbar.scss'
 })

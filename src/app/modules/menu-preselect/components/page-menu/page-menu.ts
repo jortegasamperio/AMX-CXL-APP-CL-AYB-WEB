@@ -71,8 +71,8 @@ export class PageMenu implements OnInit, OnDestroy {
 
   readonly menuColumns: readonly MenuColumn[] = [
     { field: 'flightNumber', header: 'No. Vuelo' },
-    { field: 'departureAirport', header: 'Estacion Salida' },
-    { field: 'arriveAirport', header: 'Estacion Llegada' },
+    { field: 'departureAirport', header: 'Estación Salida' },
+    { field: 'arriveAirport', header: 'Estación Llegada' },
     { field: 'ciclo', header: 'Ciclo' },
     { field: 'mesCiclo', header: 'Mes Ciclo' },
     { field: 'annio', header: 'Año' },

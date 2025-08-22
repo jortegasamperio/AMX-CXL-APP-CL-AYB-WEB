@@ -1,4 +1,20 @@
-$primary-blue: #020c41;
+@use '../../../styles.scss' as styles2;
+
+:host {
+    --button-height: 30px;
+    --button-width: 200px;
+    --button-font-size: 14px;
+    --button-border-radius: 20px;
+    --icon-size: 20px;
+    --table-button-size: 40px;
+    --mobile-button-height: 25px;
+    --mobile-button-width: 180px;
+    --mobile-button-font-size: 12px;
+    --mobile-icon-size: 15px;
+    --mobile-table-button-size: 30px;
+}
+
+ $primary-blue: #020c41;
 
 .titleCat {
     margin-bottom: -40px;
@@ -30,7 +46,7 @@ $primary-blue: #020c41;
 }
 
 .custom-header-style {
-    background-color: $primary-blue !important;
+    background-color: styles2.$primary-blue !important;
     color: white;
     font-weight: bold;
 }
@@ -92,6 +108,19 @@ $primary-blue: #020c41;
 
 /* Phone */
 @media only screen and (min-device-width: 320px) and (max-width: 599px) and (orientation: portrait) {
+
+  .home_container {
+    min-height: 91dvh;
+  }
+
+  .div_header {
+    height: 150px;
+  }
+
+  .text_title {
+    font-size: 20px;
+  }
+  
   .titleComponent {
     font-size: 18pt;
     left: -20px;
@@ -125,6 +154,19 @@ $primary-blue: #020c41;
 
 /* Landscape Phone */
 @media only screen and (max-width: 599px) and (orientation: landscape) {
+
+  .home_container {
+    min-height: 90.2dvh;
+  }
+
+  .div_header {
+    height: 130px;
+  }
+
+  .text_title {
+    font-size: 20px;
+  }  
+
   .titleComponent {
     font-size: 16pt;
     left: 20px;
@@ -139,6 +181,18 @@ $primary-blue: #020c41;
 
 /* Tablet Portrait */
 @media only screen and (min-width:600px) and (max-width: 839px) and (orientation: portrait) {
+
+  .home_container {
+    min-height: 90.2dvh;
+  }
+
+  .div_header {
+    height: 150px;
+  }
+
+  .text_title {
+    font-size: 30px;
+  }  
 
   .titleComponent {
     font-size: 24pt;
@@ -163,6 +217,19 @@ $primary-blue: #020c41;
 
 /* Tablet Landscape */
 @media only screen and (min-width:600px) and (max-width: 839px) and (orientation: landscape) {
+
+  .home_container {
+    min-height: 87dvh;
+  }
+
+  .div_header {
+    height: 150px;
+  }
+
+  .text_title {
+    font-size: 30px;
+  }  
+  
   .titleComponent {
     font-size: 26pt;
     left: -20px;
@@ -180,8 +247,113 @@ $primary-blue: #020c41;
   }
 }
 
+.div_container {
+    min-height: 68dvh;
+    width: 100%;
+}
+
+.div_breadcrumb {
+    padding: 60px;
+    font-size: 13px;
+    padding-left: 12px;
+}
+
+.div_header {
+  display: flex;
+  align-items: center;
+  background-image: url("../../../assets/images/Menu/Preselect.png");
+  background-size: cover;
+  background-position: center;
+  background-color: #ffffff70;
+  background-blend-mode: overlay;
+}
+
+.a_ayb {
+    color: #07e7cc;
+    font-weight: bold;
+}
+
+.div_expansion_panel {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.expansion_panel {
+    width: min(60%, 800px);
+}
+
+.container_table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.div_upload {
+    width: min(80%, 1200px);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.div_table {
+    width: min(80%, 1200px);
+}
+
+.upload_btn {
+    width: var(--button-width);
+    height: var(--button-height);
+    font-size: var(--button-font-size);
+    border-radius: var(--button-border-radius);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: styles2.$primary-pink;
+
+    &:hover {
+        background-color: styles2.$dark-pink;
+        box-shadow: 0 0.25rem 0.5rem rgba(249, 6, 116, 0.3);
+    }
+}
+
+.search_btn {
+    width: var(--button-width);
+    height: var(--button-height);
+    font-size: var(--button-font-size);
+    border-radius: var(--button-border-radius);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: styles2.$primary-darkcyan;
+
+    &:hover {
+        background-color: styles2.$primary-darkcyan;
+        box-shadow: 0 0.25rem 0.5rem styles2.$dark-darkcyan;
+    }
+
+    &.btn_clearf {
+        margin-right: 2%;
+    }
+  }
+
 /* Desktop */
 @media only screen and (min-width:840px) and (max-width: 1289px) {
+
+  .home_container {
+    min-height: 90dvh;
+  }
+
+  .div_header {
+    height: 150px;
+  }
+
+  .text_title {
+    font-size: 30px;
+  }  
+
   .titleComponent {
     font-size: 30pt;
     left: 60px;
@@ -201,9 +373,24 @@ $primary-blue: #020c41;
 
 /* Monitors */
 @media only screen and (min-width:1290px) {
+
+  .home_container {
+    //height: 100%;
+    min-height: 90.1dvh;
+  }
+
+  .div_header {
+    height: 200px;
+    width: 100%;
+  }
+
   .table-wrapper {
     max-width: 90%;
     margin: 0 auto;
     overflow-x: auto;
   }
+}
+
+.zona-interactiva:hover {
+  cursor: pointer;
 }

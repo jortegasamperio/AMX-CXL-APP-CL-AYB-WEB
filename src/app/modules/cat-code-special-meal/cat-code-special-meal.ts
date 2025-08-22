@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
@@ -16,7 +17,7 @@ import { CatSpecialmealService } from '../../services/cat-specialmeal.service';
   standalone: true,
   selector: 'app-cat-code-special-meal',
   imports: [CommonModule, MatTableModule, MatPaginatorModule, MatInputModule, MatButtonModule,
-    MatIconModule, FormsModule, MatCardModule
+    MatIconModule, FormsModule, MatCardModule, RouterModule
   ],
   templateUrl: './cat-code-special-meal.html',
   styleUrls: ['./cat-code-special-meal.scss']
@@ -49,11 +50,11 @@ export class CatCodeSpecialMeal implements OnInit, AfterViewInit {
   }
 
   colsPreselect = [
-    { field: 'code', header: 'Codigo' },
+    { field: 'code', header: 'Código' },
     { field: 'nameEs', header: 'Nombre Es' },
-    { field: 'DescriptionEs', header: 'Descripcion Es' },
+    { field: 'DescriptionEs', header: 'Descripción Es' },
     { field: 'nameEn', header: 'Nombre En' },
-    { field: 'DescriptionEn', header: 'Descripcion En' }
+    { field: 'DescriptionEn', header: 'Descripción En' }
   ];
 
   showImage(reg: any): void {

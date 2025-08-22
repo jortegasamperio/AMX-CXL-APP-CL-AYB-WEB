@@ -1,5 +1,9 @@
 @use '../../../styles.scss' as styles;
 
+.zona-interactiva:hover {
+  cursor: pointer;
+}
+
 .div_header {
   display: flex;
   align-items: center;

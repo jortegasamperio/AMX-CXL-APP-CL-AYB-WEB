@@ -111,7 +111,7 @@ export class CatEmailReportAdd implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
-          if (response.status === 201) {
+          if (response.status === 200) {
             this.snackBar.open(response.message, 'Cerrar', {
               duration: 3000,
               horizontalPosition: 'center',

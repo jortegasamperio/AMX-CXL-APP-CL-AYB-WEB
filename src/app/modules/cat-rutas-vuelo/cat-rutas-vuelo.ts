@@ -1,21 +1,22 @@
-import { Component, ViewChild, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule, PageEvent, MatPaginator } from '@angular/material/paginator';
+import { RouterModule } from '@angular/router';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { CatRutasVueloAdd } from './components/cat-rutas-vuelo-add/cat-rutas-vuelo-add';
 import { CatRutasVueloEdit } from './components/cat-rutas-vuelo-edit/cat-rutas-vuelo-edit';
-import { CatRutasVueloDelete } from './components/cat-rutas-vuelo-delete/cat-rutas-vuelo-delete';
-import { CatRutasVueloBulkUpload } from './components/cat-rutas-vuelo-bulk-upload/cat-rutas-vuelo-bulk-upload';
-import { CatRutasVueloDetail } from './components/cat-rutas-vuelo-detail/cat-rutas-vuelo-detail';
+import { CatCodePreselectDelete } from './components/cat-rutas-vuelo-delete/cat-rutas-vuelo-delete';
+import { CatCodePreselectBulkUpload } from './components/cat-rutas-vuelo-bulk-upload/cat-rutas-vuelo-bulk-upload';
+import { CatCodePreselectDetail } from './components/cat-rutas-vuelo-detail/cat-rutas-vuelo-detail';
 import { RutasVuelo } from '../../data/cat-rutas-vuelo/cat-rutas-vuelo';
-import { CatRutasVueloService } from '../../services/cat-rutas-vuelo.service';
-import { Subject, takeUntil, catchError, of } from 'rxjs';
 
 
 @Component({
@@ -25,57 +26,40 @@ import { Subject, takeUntil, catchError, of } from 'rxjs';
     CommonModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    RouterModule
   ],
   templateUrl: './cat-rutas-vuelo.html',
   styleUrls: ['./cat-rutas-vuelo.scss']
 })
-export class CatRutasVuelo implements OnInit, OnDestroy {
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  totalRecords = 0;
-  pageSize = 5;
-  pageNumber = 1;
-  pageSizes = [5, 10, 25, 50];
-
-  dataSource: RutasVuelo[] = [];
-  filters: { [key: string]: string } = {};
-
-  currentFlightNumber: number | null = null;
-  currentDepartureAirport: string = "";
-  currentArrivalAirport: string = "";
-
-  private destroy$ = new Subject<void>();
-
+export class CatRutasVuelo implements AfterViewInit {
+  
+      // Signals para estado reactivo
+  readonly panelOpenState = signal(false);
   searchForm: FormGroup;
   
-  constructor(private dialog: MatDialog, private fb: FormBuilder, private rutasVueloService: CatRutasVueloService, private cdr: ChangeDetectorRef) {
+  constructor(private dialog: MatDialog, private fb: FormBuilder) {
     this.searchForm = this.fb.group({
-      flightNumber: [''],
-      departureStation: [''],
-      arrivalStation: ['']
+      flightNumber: ['', Validators.required],
+      departureStation: ['', Validators.required],
+      arrivalStation: ['', Validators.required]
     });
   }
 
   abrirPopupBulk(): void {
-    const dialogRef = this.dialog.open(CatRutasVueloBulkUpload, {
+    const dialogRef = this.dialog.open(CatCodePreselectBulkUpload, {
     });
 
-    dialogRef.afterClosed().pipe(
-      takeUntil(this.destroy$),
-      catchError(error => {
-        console.error('Error en diálogo:', error);
-        return of(null);
-      })
-    ).subscribe(resultado => {
+    dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        this.handleDialogResult(resultado);
+        console.log('Datos del formulario:', resultado);
       }
     });
   }
@@ -84,51 +68,33 @@ export class CatRutasVuelo implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(CatRutasVueloAdd, {
     });
 
-    dialogRef.afterClosed().pipe(
-      takeUntil(this.destroy$),
-      catchError(error => {
-        console.error('Error en diálogo:', error);
-        return of(null);
-      })
-    ).subscribe(resultado => {
+    dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        this.handleDialogResult(resultado);
+        console.log('Datos del formulario:', resultado);
       }
     });
   }
 
-  abrirPopupEdit(registroSeleccionado: RutasVuelo): void {
+  abrirPopupEdit(registroSeleccionado: any): void {
     const dialogRef = this.dialog.open(CatRutasVueloEdit, {
       data: registroSeleccionado
     });
   
-    dialogRef.afterClosed().pipe(
-      takeUntil(this.destroy$),
-      catchError(error => {
-        console.error('Error en diálogo:', error);
-        return of(null);
-      })
-    ).subscribe(resultado => {
+    dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        this.handleDialogResult(resultado);
+        console.log('Datos del formulario:', resultado);
       }
     });
   }
 
-  abrirPopupDetail(registroSeleccionado: RutasVuelo): void {
-    const dialogRef = this.dialog.open(CatRutasVueloDetail, {
+  abrirPopupDetail(registroSeleccionado: any): void {
+    const dialogRef = this.dialog.open(CatCodePreselectDetail, {
       data: registroSeleccionado
     });
   
-    dialogRef.afterClosed().pipe(
-      takeUntil(this.destroy$),
-      catchError(error => {
-        console.error('Error en diálogo:', error);
-        return of(null);
-      })
-    ).subscribe(resultado => {
+    dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        this.handleDialogResult(resultado);
+        console.log('Datos del formulario:', resultado);
       }
     });
   }
@@ -139,33 +105,27 @@ export class CatRutasVuelo implements OnInit, OnDestroy {
     this.mostrarContenido = !this.mostrarContenido;
   }
 
-  abrirPopupDelete(registroSeleccionado: RutasVuelo): void {
-    const dialogRef = this.dialog.open(CatRutasVueloDelete, {
-      data: registroSeleccionado
+  abrirPopupDelete(): void {
+    const dialogRef = this.dialog.open(CatCodePreselectDelete, {
     });
 
-    dialogRef.afterClosed().pipe(
-      takeUntil(this.destroy$),
-      catchError(error => {
-        console.error('Error en diálogo:', error);
-        return of(null);
-      })
-    ).subscribe(resultado => {
+    dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        this.handleDialogResult(resultado);
+        console.log('Datos del formulario:', resultado);
       }
     });
   }
 
-  image = '../../assets/images/Menu/Vuelos.png';
+  //image = '../../assets/images/Menu/Vuelos.jpg';
 
+  rutasVuelo: RutasVuelo[] = [];
   colsPreselect = [
-    { field: 'region', header: 'Region' },
+    { field: 'region', header: 'Región' },
     { field: 'flightNumber', header: 'No. vuelo' },
-    { field: 'departureAirport', header: 'Estacion salida' },
-    { field: 'arrivalAirport', header: 'Estacion llegada' },
+    { field: 'departureStation', header: 'Estación salida' },
+    { field: 'arrivalStation', header: 'Estación llegada' },
     { field: 'preselect', header: 'Preselect' },
-    { field: 'specialmeal', header: 'Special Meal' }
+    { field: 'specialMeal', header: 'Special Meal' },
   ];
 
   languageGlobal = {
@@ -173,67 +133,41 @@ export class CatRutasVuelo implements OnInit, OnDestroy {
     download: 'Descargar'
   };
 
+  dataSource = new MatTableDataSource<any>();
+  filters: { [key: string]: string } = {};
+  
   advancedSearch(): void {
     const formValues = this.searchForm.value;
-    this.currentFlightNumber = formValues.flightNumber ? Number(formValues.flightNumber) : null;
-    this.currentDepartureAirport = formValues.departureAirport || "";
-    this.currentArrivalAirport = formValues.arrivalAirport || "";
-    this.pageNumber = 1;
-    
-    if (this.paginator) {
-      this.paginator.pageIndex = 0;
-    }
-    
-    let requestSearch = { 
-      flightNumber: this.currentFlightNumber,
-      departureAirport: this.currentDepartureAirport,
-      arrivalAirport: this.currentArrivalAirport,
-      pageNumber: this.pageNumber, 
-      pageSize: this.pageSize
-    };
-    this.getRutasVuelo(requestSearch);
+    console.log('Buscar:', formValues.flightNumber, formValues.departureStation, formValues.arrivalStation);
   }
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   ngOnInit(): void {
+    this.dataSource.data = ELEMENT_DATA;
+
     this.colsPreselect.forEach(col => {
       this.filters[col.field] = '';
     });
-    let requestSearch = { 
-      flightNumber: null, 
-      departureAirport: "", 
-      arrivalAirport: "", 
-      pageNumber: this.pageNumber, 
-      pageSize: this.pageSize 
-    };
-    this.getRutasVuelo(requestSearch);
   }
 
-  getRutasVuelo(request: any): void {
-    this.rutasVueloService.getRutasVuelo(request).subscribe({
-      next: (data) => {
-        if (data.status == 200) {
-          this.dataSource = data.data.items;
-          this.totalRecords = data.data.totalRecords;
-          this.pageSize = data.data.pageSize;
-          this.pageNumber = data.data.pageNumber;
-          this.cdr.detectChanges();
-        }
-      },
-      error: (err) => {
-        console.error('Error fetching rutas vuelo:', err);
-      },
-    });
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    this.dataSource.filterPredicate = (data: any, filter: string): boolean => {
+      const searchTerms = JSON.parse(filter);
+      return this.colsPreselect.every(col => {
+        const fieldValue = (data[col.field] || '').toString().toLowerCase();
+        const searchValue = (searchTerms[col.field] || '').toLowerCase();
+        return fieldValue.includes(searchValue);
+      });
+    };
   }
 
-  onPageChange(event: PageEvent): void {
-    let requestSearch = { 
-      flightNumber: this.currentFlightNumber,
-      departureAirport: this.currentDepartureAirport,
-      arrivalAirport: this.currentArrivalAirport,
-      pageNumber: event.pageIndex + 1, 
-      pageSize: event.pageSize 
-    };
-    this.getRutasVuelo(requestSearch);
+  applyFilter(): void {
+    this.dataSource.filter = JSON.stringify(this.filters);
   }
 
   get columns() {
@@ -244,26 +178,19 @@ export class CatRutasVuelo implements OnInit, OnDestroy {
   return [...this.colsPreselect.map(col => col.field), 'detail', 'edit', 'delete'];
   }
 
+  download(row: any): void {
+    console.log('Descargar manual:', row);
+  }
+
   openAddModal(): void {
     console.log('Abrir modal para agregar');
   }
-
-  handleDialogResult(resultado: any): void {
-    console.log('Datos del formulario:', resultado);
-    if (resultado.action === 'cerrar') {
-      let requestSearch = { 
-        flightNumber: null, 
-        departureAirport: "", 
-        arrivalAirport: "", 
-        pageNumber: this.pageNumber, 
-        pageSize: this.pageSize 
-      };
-      this.getRutasVuelo(requestSearch);
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 }
+
+const ELEMENT_DATA: RutasVuelo[] = [
+  { region: 'EUR', flightNumber: '1', departureStation: 'MEX', arrivalStation: 'MAD', preselect: 'Si', specialMeal: 'J,Y'},
+  { region: 'EUR', flightNumber: '2', departureStation: 'MAD', arrivalStation: 'MEX', preselect: 'Si', specialMeal: 'J,Y'},
+  { region: 'EUR', flightNumber: '3', departureStation: 'MEX', arrivalStation: 'CDG', preselect: 'Si', specialMeal: 'J,Y'},
+  { region: 'EUR', flightNumber: '4', departureStation: 'CDG', arrivalStation: 'MEX', preselect: 'Si', specialMeal: 'J,Y'},
+  { region: 'EUR', flightNumber: '5', departureStation: 'MEX', arrivalStation: 'CDG', preselect: 'Si', specialMeal: 'J,Y'}
+];

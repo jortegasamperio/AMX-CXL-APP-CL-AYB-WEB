@@ -21,19 +21,18 @@
         <mat-label>No. vuelo</mat-label>
         <input matInput formControlName="flightNumber" />
         <mat-error *ngIf="addForm.get('flightNumber')?.hasError('required')">Campo requerido</mat-error>
-        <mat-error *ngIf="addForm.get('flightNumber')?.hasError('pattern')">Solo se permiten números</mat-error>
       </mat-form-field>
     </div>
     <div class="fila">
       <mat-form-field appearance="outline" class="campo">
         <mat-label>Estacion de salida</mat-label>
-        <input matInput formControlName="departureAirport" />
-        <mat-error *ngIf="addForm.get('departureAirport')?.hasError('required')">Campo requerido</mat-error>
+        <input matInput formControlName="departureStation" />
+        <mat-error *ngIf="addForm.get('departureStation')?.hasError('required')">Campo requerido</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="campo">
         <mat-label>Estacion de llegada</mat-label>
-        <input matInput formControlName="arrivalAirport" />
-        <mat-error *ngIf="addForm.get('arrivalAirport')?.hasError('required')">Campo requerido</mat-error>
+        <input matInput formControlName="arrivalStation" />
+        <mat-error *ngIf="addForm.get('arrivalStation')?.hasError('required')">Campo requerido</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="campo">
         <mat-label>Grupo</mat-label>
@@ -44,26 +43,25 @@
     <div class="fila">
       <mat-form-field appearance="outline" class="campo">
         <mat-label>IATA CJ</mat-label>
-        <input matInput formControlName="iatacj" />
-        <mat-error *ngIf="addForm.get('iatacj')?.hasError('required')">Campo requerido</mat-error>
+        <input matInput formControlName="iataCj" />
+        <mat-error *ngIf="addForm.get('iataCj')?.hasError('required')">Campo requerido</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="campo">
         <mat-label>IATA CY</mat-label>
-        <input matInput formControlName="iatacy" />
-        <mat-error *ngIf="addForm.get('iatacy')?.hasError('required')">Campo requerido</mat-error>
+        <input matInput formControlName="iataCy" />
+        <mat-error *ngIf="addForm.get('iataCy')?.hasError('required')">Campo requerido</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="campo">
         <mat-label>Preselect</mat-label>
         <input matInput formControlName="preselect" />
         <mat-error *ngIf="addForm.get('preselect')?.hasError('required')">Campo requerido</mat-error>
-        <mat-error *ngIf="addForm.get('preselect')?.hasError('pattern')">Solo se permite 'Si' o 'No'</mat-error>
       </mat-form-field>
     </div>
     <div class="fila">
       <mat-form-field appearance="outline" class="campo comentarios">
         <mat-label>Comentario</mat-label>
-        <textarea matInput formControlName="comment" rows="3"></textarea>
-        <mat-error *ngIf="addForm.get('comment')?.hasError('required')">Campo requerido</mat-error>
+        <textarea matInput formControlName="comentarios" rows="3"></textarea>
+        <mat-error *ngIf="addForm.get('comentarios')?.hasError('required')">Campo requerido</mat-error>
       </mat-form-field>
     </div>
   </form>
